@@ -1,17 +1,66 @@
-# DevOps AD 3 - Seguridad
-Repositorio para la actividad 3 de DevOps sobre Seguridad
+# DevOps AD 4 - Capacidades de Despliegue
+Repositorio para la actividad 4 de DevOps sobre Capacidades de Despliegue
 
 ## Enunciado
-Para proteger el acceso y los datos de nuestro nuevo servicio web, se establecen los siguientes requisitos:
-Se limitará el acceso a usuarios registrados y se crearán nuevos endpoints:
-* 1. Creación de usuario, donde como mínimo se dará de alta a un usuario identificado por un ID y una contraseña. Por motivos de seguridad, la contraseña nunca se almacena en claro.
-Eliminación de usuario, servicio complementario al anterior, elimina un usuario del sistema e invalida todos sus tokens. 
-Evidentemente, es un endpoint al que solo puede acceder el propio usuario.
-Login, servicio que responderá a un par ID/contraseña válidos con un token de servicio, válido durante una hora como máximo.
-Logout, servicio que invalida automáticamente los tokens de un usuario.
-* 2. Se protegerá el acceso a los endpoints existentes, empleando un token que se enviará mediante cabeceras HTTP.
-Se debe validar el token para ver que no sea demasiado antiguo y que no corresponda a un usuario inválido.
-* 3. Para proteger los datos en tránsito, se requiere que el acceso al servicio aproveche las capacidades de cifrado de datos protocolo TLS. 
+El siguiente paso sería añadir capacidades de despliegue a nuestro servicio, idealmente lanzado automáticamente desde su pipeline de CICD:
+
+* Desplegar los contenedores en algún servicio que lo provea, como AWS Fargate, un Hashicorp Nomad en self-hosting, o máquinas propias con Docker o Docker Swarm instalado.
+* Aplicar un Deployment en Kubernetes, ya sea propio o la versión de los Cloud providers.
+* Enviar los ejecutables a una o más instancias que los pueden servir, usando servidores web como Tomcat/Catalina (Java) o Unicorn/WSGI (Python).
+
+Pero incluso antes de pensar en desplegar, tenemos que pensar en cómo garantizar que nuestro servicio esté funcionando perfectamente una vez eso ocurra: para eso existen los endpoints de disponibilidad (readiness) y estado (liveness).
+
+Además, es vital poder emitir métricas desde nuestra aplicación, métricas que podrían ser enviadas por un agente a un servicio como Elasticsearch, o recolectadas en modo pull por un servidor de Prometheus.
+
+Por último, se necesita empezar a centralizar el sistema de logs para su futuro envío a un almacén distribuido de trazas. Para esto, es requisito que las trazas (logs) de la aplicación acaben en la carpeta logs , con el siguiente formato de nombre:
+
+- Trazas de aplicación: server-YYYYMMDD.log
+- Errores: error-YYYYMMDD.log
+
+## Objetivo
+
+Se pide al alumno la codificación de tres nuevos endpoints, no protegidos por autenticación:
+
+- /ready
+  - HTTP 200 - Si el servicio está preparado para funcionar (base de datos accesible, servicios de terceros conectados, logging y métricas configuradas…)
+  - HTTP 503 - Si existe alguna condición que evite dar servicio.
+  - **NOTA:** En caso de no existir ningún recurso que comprobar (ej. no se ha implementado ningún backend de almacenamiento, ni siquiera un fichero) deberá implementarse alguno para la práctica. Sino, no será correcta.
+
+- /health
+  - HTTP 200 - Si el servicio está funcionando OK.
+  - HTTP 503- Si el servicio no puede funcionar.
+
+- /metrics
+  - Un diccionario JSON con los valores de las siguientes métricas:
+    - número de peticiones a cada endpoint.
+    - tiempo medio en dar una respuesta (milisegundos) por endpoint.
+    - Número de entradas en base de datos de palabras.
+
+    **Estos valores empiezan a contar desde que arranca el servicio.**
+
+  Ejemplo (el formato es libre mientras se respete el contenido):
+  
+    ```yalm
+    {
+        "metrics": [
+            {
+                "name": "consulta_avg_response_time",
+                "value" "15.05"
+            },
+            {
+                "name": "consulta_hits",
+                "value": "120"
+            },
+            {
+                "name": "db_entries",
+                "value": "140000"
+            }
+        ]
+    }
+    ```
+
+  **Adicionalmente**, se puede añadir también los datos históricos (incluyendo de todas las ejecuciones pasadas), lo que subirá la nota final.
+
 
 ## Implementación
 Se ha optado por realizar una implementación del servicio usando Python y Flask mediante peticiones POST y GET al servidor.\

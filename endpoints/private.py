@@ -33,9 +33,9 @@ def token_required(f):
         if not token:
             return make_response(jsonify({'message': 'a valid token is missing'}), 403)
 
-        # Comprobamos que el token no haya sido flageado como inválido
-        result = []
-        if token in InvalidToken.query.filter_by(token_body=result['token_body']).all():
+        # Comprobamos que el token no haya sido marcado como inválido
+        results = InvalidToken.query.filter_by(token_body=token).all()
+        if len(results) > 0:
             return make_response(jsonify({'message': 'token expired'}), 403)
 
         try:
@@ -122,7 +122,7 @@ def consultar(current_user):
 @token_required
 def logout(current_user):
     token = request.headers['x-access-tokens']
-    new_invalidToken = InvalidToken(token_body=token, public_id=current_user.public_id)
+    new_invalidToken = InvalidToken(token_body=token, pertenece_a=current_user.public_id)
     db.session.add(new_invalidToken)
     db.session.commit()
 

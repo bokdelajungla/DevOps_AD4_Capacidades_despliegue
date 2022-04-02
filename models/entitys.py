@@ -11,7 +11,7 @@ class User(db.Model):
     public_id = db.Column(db.Integer)
     name = db.Column(db.String(50))
     password = db.Column(db.String(100))
-    children = db.relationship('Cadenas', backref='users')
+    cadenas_ingresadas = db.relationship('Cadena', backref='users')
 
 
 class Cadena(db.Model):
@@ -19,14 +19,14 @@ class Cadena(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     public_id = db.Column(db.Integer)
     text = db.Column(db.String(100))
-    parent_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    parent = db.relationship('Users')
+    ingresada_por = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User')
 
 
 class InvalidToken(db.Model):
     __tablename__='invalidtokens'
     id = db.Column(db.Integer, primary_key=True)
     token_body = db.Column(db.String(100))
-    public_id = db.Column(db.Integer, db.ForeignKey('user.public_id'))
-    parent = db.relationship('Users')
+    pertenece_a = db.Column(db.Integer, db.ForeignKey('users.public_id'))
+    user = db.relationship('User')
 

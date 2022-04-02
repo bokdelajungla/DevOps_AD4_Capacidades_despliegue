@@ -2,7 +2,7 @@
 
 '''
 
-from flask import request, jsonify, make_response
+from flask import request, jsonify, make_response, current_app
 from flask import Blueprint
 from functools import wraps
 import jwt
@@ -24,7 +24,7 @@ private_bp = Blueprint('private', __name__, template_folder='templates')
 def token_required(f):
     @wraps(f)
     def decorator(*args, **kwargs):
-
+        current_app.logger.info('Comprobando Token')
         token = None
 
         if 'x-access-tokens' in request.headers:
@@ -61,12 +61,13 @@ Devuelve:
 @private_bp.route("/almacena", methods=['POST'])
 @token_required
 def almacenar(current_user):
+    current_app.logger.info('Acceso a Almacena')
     if request.method == 'POST':
         if 'string' in request.args:
             cadena = request.args.get('string')
             with open(config.default.FILENAME, "a+") as f:
                 f.write(cadena + '\n')
-            data = {'code': 'SUCCESS', 'message': cadena + ' ADDED', 'userid': current_user.id}
+            data = {'code': 'SUCCESS', 'message': cadena + ' ADDED', 'userid': current_user.public_id}
             return make_response(jsonify(data), 200)
         else:
             data = {'code': 'BAD REQUEST', 'message': 'No se ha encontrado el parámetro "string"'}
@@ -88,6 +89,7 @@ Devuelve:
 @private_bp.route("/consulta", methods=['GET'])
 @token_required
 def consultar(current_user):
+    current_app.logger.info('Acceso a Consulta')
     if request.method == 'GET':
         if 'string' in request.args:
             cadena = request.args.get('string')
@@ -108,7 +110,7 @@ def consultar(current_user):
                             'ASCII').casefold()
                         if cadena_aux in linea_aux:
                             contador = contador + 1
-                data = {'code': 'SUCCESS', 'Lineas en las que aparece': contador, 'userid': current_user.id}
+                data = {'code': 'SUCCESS', 'Lineas en las que aparece': contador, 'userid': current_user.public_id}
                 return make_response(jsonify(data), 200)
             else:
                 data = {'code': 'BAD REQUEST', 'message': 'El parámetro debe ser una única palabra'}
@@ -121,9 +123,18 @@ def consultar(current_user):
 @private_bp.route("/logout", methods=['GET', 'POST'])
 @token_required
 def logout(current_user):
+    current_app.logger.info('Acceso a Logout')
     token = request.headers['x-access-tokens']
-    new_invalidToken = InvalidToken(token_body=token, pertenece_a=current_user.public_id)
-    db.session.add(new_invalidToken)
-    db.session.commit()
-
-    return make_response(jsonify(), 200)
+    try:
+        new_invalidToken = InvalidToken(token_body=token, public_id_fk=current_user.public_id)
+        db.session.add(new_invalidToken)
+        db.session.commit()
+        data = {'code': 'SUCCESS', 'message': 'Logout realizado con éxito',
+                'userid': current_user.public_id, 'tokenInvalidado': token}
+        return make_response(jsonify(data), 200)
+    except BaseException as err:
+        err
+        data = {'code': 'ERROR', 'message': err.args[0],
+                'userid': current_user.public_id, 'token': token}
+        current_app.logger.error(err.args[0])
+        return make_response(jsonify(data), 500)

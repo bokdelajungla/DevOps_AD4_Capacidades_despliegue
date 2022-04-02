@@ -2,7 +2,7 @@
 
 '''
 
-from flask import request, jsonify, make_response
+from flask import request, jsonify, make_response, current_app
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
@@ -20,11 +20,13 @@ public_bp = Blueprint('public', __name__, template_folder='templates')
 # Endpoint Home Page
 @public_bp.route("/")
 def home():
+    current_app.logger.info('Acceso a Home')
     return "<h1>Servicio Web para Cadenas</h1><br>"
 
 
 @public_bp.route('/login', methods=['GET', 'POST'])
 def login_user():
+    current_app.logger.info('Acceso a Login')
     auth = request.authorization
 
     if not auth or not auth.username or not auth.password:
@@ -41,6 +43,7 @@ def login_user():
 
 @public_bp.route('/signup', methods=['GET', 'POST'])
 def signup_user():
+    current_app.logger.info('Acceso a SignUp')
     data = request.get_json()
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
@@ -55,7 +58,7 @@ def signup_user():
 
 @public_bp.route('/users', methods=['GET'])
 def get_all_users():
-
+    current_app.logger.info('Acceso a ListUsers')
     users = User.query.all()
 
     result = []
@@ -71,3 +74,17 @@ def get_all_users():
     return jsonify({'users': result})
 
 
+@public_bp.route('/ready')
+def ready_check():
+    current_app.logger.info('Acceso a ReadyCheck')
+    return None
+
+@public_bp.route('/health')
+def health_check():
+    current_app.logger.info('Acceso a HealthCheck')
+    return None
+
+@public_bp.route('/metrics')
+def metrics_show():
+    current_app.logger.info('Acceso a Metrics')
+    return None

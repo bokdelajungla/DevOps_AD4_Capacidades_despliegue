@@ -1,9 +1,5 @@
 '''
 Servicio Web que escucha en el puerto 12345
-y tiene dos endpoints
-una que guarda la cadena que se le envia como parámetro en un fichero
-y otro que devuelve el número de veces de una cadena aparece al menos una vez
-en cada una de las lineas del fichero, ignorando mayúsculas y tildes
 
 @autor: Jorge Sánchez-Alor, Antonio De Gea Velasco, Adrian Rodriguez Montesinos
 
@@ -18,32 +14,39 @@ from flask_sqlalchemy import SQLAlchemy
 # Para hacer uso de argumentos
 import argparse
 
+# Para hacer uso de losl logs
+import logging
+
 # Parámetros por defecto y configuración
 import config.default
 
+# Manejador de la Base de Datos
 db = SQLAlchemy()
 
 
+# *** METODOS *** #
+# Función para crear la app Flask
 def create_app():
     # La aplicación a partir de la clase Flask
     app = Flask(__name__)
-    #SECRET_KEY generada mediante secrets.token_hex()
+    # Configuraciones
+    # SECRET_KEY generada mediante secrets.token_hex()
     app.config['SECRET_KEY'] = config.default.SECRET_KEY
     app.config['SQLALCHEMY_DATABASE_URI'] = config.default.SQLALCHEMY_DATABASE_URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config.default.SQLALCHEMY_TRACK_MODIFICATIONS
-
+    # Activamos el logging
+    configure_logging(app)
+    # Iniciamos la base de datos
     db.init_app(app)
-
     # Registro de los Blueprints
     from endpoints.public import public_bp
     app.register_blueprint(public_bp)
-
     from endpoints.private import private_bp
     app.register_blueprint(private_bp)
 
     return app
 
-# *** METODOS *** #
+
 # Comprobación de argumentos
 def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -53,6 +56,7 @@ def main():
 
     print("Escuchando en puerto: ", args.port)
     return args.file, args.port
+
 
 # DEPRECATED
 # Comprobación existencia del fichero de persistencia
@@ -66,6 +70,33 @@ def check_file(fichero):
         print("Encontrado fichero de persistencia...")
         print("Cargando datos de " + fichero)
         return 1
+
+
+# Funciones para el logging
+def configure_logging(app):
+    # Eliminamos los posibles manejadores, si existen, del logger por defecto
+    del app.logger.handlers[:]
+    # Añadimos el logger por defecto a la lista de loggers
+    loggers = [app.logger, logging.getLogger('sqlalchemy'), ]
+    handlers = []
+    # Creamos un manejador para escribir los mensajes por consola
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+    console_handler.setFormatter(verbose_formatter())
+    handlers.append(console_handler)
+    # Asociamos cada uno de los handlers a cada uno de los loggers
+    for l in loggers:
+        for handler in handlers:
+            l.addHandler(handler)
+        l.propagate = False
+        l.setLevel(logging.DEBUG)
+
+
+def verbose_formatter():
+    return logging.Formatter(
+        '[%(asctime)s.%(msecs)d]\t %(levelname)s \t[%(name)s.%(funcName)s:%(lineno)d]\t %(message)s',
+        datefmt='%d/%m/%Y %H:%M:%S'
+    )
 
 
 # Para que se inicie la aplicación al ejecutar el script

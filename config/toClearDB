@@ -1,0 +1,8 @@
+Open python console:
+
+from server import db
+from server import create_app
+app = create_app()
+app.app_context().push()
+db.drop_all()
+db.create_all()

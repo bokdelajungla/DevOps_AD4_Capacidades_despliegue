@@ -1,3 +1,7 @@
+'''
+
+'''
+
 from flask import request, jsonify, make_response
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,9 +11,10 @@ import datetime
 
 import config.default
 from server import db
-from models.entitys import Users
+from models.entitys import User
 
 public_bp = Blueprint('public', __name__, template_folder='templates')
+
 
 # Con @public_bp.route() marcamos el comportamiento que llevará a cabo nuestra aplicación
 # Endpoint Home Page
@@ -25,7 +30,7 @@ def login_user():
     if not auth or not auth.username or not auth.password:
         return make_response('could not verify', 401, {'WWW.Authentication': 'Basic realm: "login required"'})
 
-    user = Users.query.filter_by(name=auth.username).first()
+    user = User.query.filter_by(name=auth.username).first()
 
     if check_password_hash(user.password, auth.password):
         token = jwt.encode({'public_id': user.public_id, 'exp': datetime.datetime.now() + datetime.timedelta(minutes=60)}, config.default.SECRET_KEY, algorithm="HS256")
@@ -40,7 +45,7 @@ def signup_user():
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
 
-    new_user = Users(public_id=str(uuid.uuid4()), name=data['name'], password=hashed_password)
+    new_user = User(public_id=str(uuid.uuid4()), name=data['name'], password=hashed_password)
     db.session.add(new_user)
     db.session.commit()
 
@@ -51,7 +56,7 @@ def signup_user():
 @public_bp.route('/users', methods=['GET'])
 def get_all_users():
 
-    users = Users.query.all()
+    users = User.query.all()
 
     result = []
 

@@ -1,10 +1,17 @@
+'''
+
+'''
+
 from flask import request, jsonify, make_response
 from flask import Blueprint
 from functools import wraps
 import jwt
+import uuid
+import datetime
 
 import config.default
-from models.entitys import Users, Cadenas
+from server import db
+from models.entitys import User, Cadena, InvalidToken
 
 # Hacemos uso de la biblioteca unicodedata para tratar las tildes y caracteres epeciales
 import unicodedata
@@ -24,13 +31,18 @@ def token_required(f):
             token = request.headers['x-access-tokens']
 
         if not token:
-            return jsonify({'message': 'a valid token is missing'})
+            return make_response(jsonify({'message': 'a valid token is missing'}), 403)
+
+        # Comprobamos que el token no haya sido flageado como inválido
+        result = []
+        if token in InvalidToken.query.filter_by(token_body=result['token_body']).all():
+            return make_response(jsonify({'message': 'token expired'}), 403)
 
         try:
             data = jwt.decode(token, config.default.SECRET_KEY, algorithms="HS256")
-            current_user = Users.query.filter_by(public_id=data['public_id']).first()
+            current_user = User.query.filter_by(public_id=data['public_id']).first()
         except:
-            return jsonify({'message': 'token is invalid'})
+            return make_response(jsonify({'message': 'token is invalid'}), 403)
 
         return f(current_user, *args, **kwargs)
     return decorator
@@ -108,5 +120,10 @@ def consultar(current_user):
 
 @private_bp.route("/logout", methods=['GET', 'POST'])
 @token_required
-def logout():
-    return "Logout"
+def logout(current_user):
+    token = request.headers['x-access-tokens']
+    new_invalidToken = InvalidToken(token_body=token, public_id=current_user.public_id)
+    db.session.add(new_invalidToken)
+    db.session.commit()
+
+    return make_response(jsonify(), 200)

@@ -74,35 +74,45 @@ Para probar el funcionamiento se recomienda emplear un programa como Curl.
 * Flask-Sqlalchemy
 * pyjwt
 
-  
+
 ### Ejecución
-Para iniciar la palicación ejecutar el comando: _python server.py [-h] [-f \<filename\>] [-p \<puerto\>]_\
+Para iniciar la palicación ejecutar el comando:
+
+_python server.py [-h] [-f \<filename\>] [-p \<puerto\>]_
+
 Si no se indica ningún parámetro se levantará el servicio con las opciones por defecto que son usando el fichero "cadenas.txt" en el puerto 12345.\
-Para terminar la aplicación pulsar Ctrl+C 
+Para terminar la aplicación pulsar Ctrl+C
 
 Para Windows, se ha creado el fichero _start.bat_ que inicia el servicio con sus valores por defecto si no se incluyen parámetros y además permite elegir un fichero y un puerto mediante la sintaxis:
 _start.bat -f fichero -p puerto_
 
 ## Funcionamiento
-Los dos endpoints son 
+Los dos endpoints son
 * /almacena
 * /consulta
 * /signup
 * /login
 * /users
+
 Hay que destacar que se usa SSL, por los que los endpoints ahora emplean el protocolo HTTPS (si se intenta acceder a ellos mediante HTTP dará un error).
 
 ### Signup
-Permite el registro de un nuevo usuario en la base de datos.
+Permite el registro de un nuevo usuario en la base de datos.\
 Se debe indicar en el cuerpo del mensaje un JSON con un nombre (name) y una contraseña (password):
-{"name":"Fulanito", "password":"contraseña"}
-El servidor devuelve un mensaje JSON en la respuesta indicando el resultado de la operación
+```yalm
+{ 
+    "name":"Fulanito",
+    "password":"contraseña" 
+}
+```
+El servidor devuelve un mensaje JSON en la respuesta indicando el resultado de la operación.\
 El nuevo usuario y la contraseña se almacenan en la base de datos (no se almacena la contraseña en claro, si no un hash)
 
 ### Login
-Permite autenticarse al usuario indicando su nombre y su contraseña en el cuerpo del mensaje en forma de JSON (análogo al endpoint signup)
+Permite autenticarse al usuario indicando su nombre y su contraseña mediante la cabecera de Autorización de HTML.
+
 Si el usuario existe y la contraseña es correcta (se hace el hash y se comprueba con la que se tiene guardada en la base de datos) el servidor devuelve un token que será válido durante 60 minutos.
-Este token habrá que incluirlo en la cabecera de las peticiones a los endpoints /almacena y /consulta en un campo llamado _x-access-tokens_ para que nos permita usarlos.
+Este token deberá ser incluido en la cabecera de las peticiones a los endpoints /almacena y /consulta en un campo llamado _x-access-tokens_ para que nos permita usarlos.
 
 ### Logout
 Se pretendía conseguir un endpoint que invalidara el token de forma inmediata, pero no hemos conseguido implementarlo a tiempo.
@@ -128,7 +138,7 @@ NOTA: No nos ha dado tiempo a realizar los test para verificar el funcionamiento
 En la carpeta tests se han incluído los test unitarios para probar el funcionamiento del servicio intentando tener una cobertura del 100%
 * _test_almacena.py_ -- prueba el funcionamiento del endpoint "almacena"
 * _test_consulta.py_ -- prueba el funcionamiento del endpoint "consulta"
-* _test_others.py_   -- prueba el funcionamiento del resto de funciones de server.py 
+* _test_others.py_   -- prueba el funcionamiento del resto de funciones de server.py
 
 Para poder ejecutar los test y ver su cobertura es necesario instalar _pytest_ y _coverage_
 

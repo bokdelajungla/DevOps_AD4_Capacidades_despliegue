@@ -9,10 +9,11 @@ from werkzeug.exceptions import HTTPException
 import jwt
 import uuid
 import datetime
+from sqlalchemy.sql import func
 
 import config.default
 from server import db
-from models.entitys import User
+from models.entitys import User, Cadena, EndpointUsage
 
 public_bp = Blueprint('public', __name__, template_folder='templates')
 
@@ -78,8 +79,27 @@ def get_all_users():
 @public_bp.route('/ready')
 def ready_check():
     current_app.logger.info('Acceso a ReadyCheck')
-    data = {'code': 'SUCCESS', 'message': 'ALL OK'}
-    return make_response(jsonify(data), 200)
+    if database_works() and loggin_works():
+        data = {'code': 'SUCCESS', 'message': 'ALL OK'}
+        return make_response(jsonify(data), 200)
+    else:
+        data = {'code': 'ERROR', 'message': 'SERVICE IS NOT RUNNING CORRECTLY'}
+        return make_response(jsonify(data), 503)
+
+
+def database_works():
+    try:
+        users = User.query.all()
+        return True
+    except:
+        return False
+
+def loggin_works():
+    try:
+        current_app.logger.info('Checking if loggin works as expected')
+        return True
+    except:
+        return False
 
 @public_bp.route('/health')
 def health_check():
@@ -91,7 +111,54 @@ def health_check():
 @public_bp.route('/metrics')
 def metrics_show():
     current_app.logger.info('Acceso a Metrics')
-    return None
+
+    # Endpoint CONSULTA
+    consultaHits = EndpointUsage.query.filter(EndpointUsage.endpoint_name == 'CONSULTA').count()
+    resultsAvgResConsulta = EndpointUsage.query.with_entities(func.avg(EndpointUsage.response_time).filter(EndpointUsage.endpoint_name=='CONSULTA')).first()
+    for row in resultsAvgResConsulta:
+        averageConsulta = row
+
+    # Endpoint ALMACENA
+    almacenaHits = EndpointUsage.query.filter(EndpointUsage.endpoint_name == 'ALMACENA').count()
+    resultsAvgResAlmacena = EndpointUsage.query.with_entities(func.avg(EndpointUsage.response_time).filter(EndpointUsage.endpoint_name=='ALMACENA')).first()
+    for row in resultsAvgResAlmacena:
+        averageAlmacena = row
+
+    # DB entries
+    resultsEntries = Cadena.query.count()
+
+    data = {
+        "metrics": [{
+            "Endpoint_CONSULTA": [{
+                "name": "consulta_avg_response_time",
+                "value": averageConsulta
+            },
+                {
+                    "name": "consulta_hits",
+                    "value": consultaHits
+                }
+            ]
+        },
+            {
+                "Endpoint_ALMACENA": [{
+                    "name": "almacena_avg_response_time",
+                    "value": averageAlmacena
+                },
+                    {
+                        "name": "almacena_hits",
+                        "value": almacenaHits
+                    }
+                ]
+            },
+            {
+                "Resource_DB": [{
+                    "name": "db_entries",
+                    "value": resultsEntries
+                }]
+            }
+        ]
+    }
+    return make_response(jsonify(data), 200)
 
 
 @public_bp.errorhandler(Exception)

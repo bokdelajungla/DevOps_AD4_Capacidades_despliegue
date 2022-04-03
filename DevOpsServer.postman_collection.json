@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "1ad5efa0-776e-421a-acc8-3e96a9230ac5",
+		"name": "DevOpsServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Antonio\", \"password\":\"12345\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:12345/signup",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:12345/users",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Jorge",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://127.0.0.1:12345/login",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiIzYmZlNWU5Yy1hMTUzLTRkMGEtYjEyYS03ZGJiNzEwZmQ3ZTUiLCJleHAiOjE2NDg5OTQ3MjJ9.9TFsItRL3TWc-0iqxiS5naCLC19vi1d6MIjUkBiRzwg",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://127.0.0.1:12345/logout",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "x-access-tokens",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiIzYmZlNWU5Yy1hMTUzLTRkMGEtYjEyYS03ZGJiNzEwZmQ3ZTUiLCJleHAiOjE2NDg5OTk5NjV9.WI5QVquBEZqgVnRRSIunmO7nPGRPkPhHobCd37OCeXM",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://127.0.0.1:12345/consulta?string=Culo",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"consulta"
+					],
+					"query": [
+						{
+							"key": "string",
+							"value": "Culo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Almacena",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiIzYmZlNWU5Yy1hMTUzLTRkMGEtYjEyYS03ZGJiNzEwZmQ3ZTUiLCJleHAiOjE2NDg5OTk5NjV9.WI5QVquBEZqgVnRRSIunmO7nPGRPkPhHobCd37OCeXM",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://127.0.0.1:12345/almacena?string=Culo+de+Mono+3",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"almacena"
+					],
+					"query": [
+						{
+							"key": "x-access-tokens",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmOGM2NmZhYS00MDgyLTRhNmItOGZhNi02OWFhZmY0NWVmNjgiLCJleHAiOjE2NDg5MzYxMTJ9.-nJ20qtdNkh8UbW70ayIDdGSPGof5R6bbT5GVqTjrjU",
+							"disabled": true
+						},
+						{
+							"key": "string",
+							"value": "Culo+de+Mono+3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:12345/",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ready",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:12345/ready",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"ready"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:12345/ready",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"ready"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:12345/metrics",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "12345",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

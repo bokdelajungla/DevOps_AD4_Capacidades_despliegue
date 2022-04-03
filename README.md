@@ -73,7 +73,7 @@ Se pretendía implementar el frontend de la aplicación mediante plantillas html
 
 
 ### Dependencias
-Las dependencias están declaradas en el fichero _requeriments.txt_
+Las dependencias están declaradas en el fichero _requirements.txt_
 
 
 ### Ejecución
@@ -210,6 +210,11 @@ _coverage report_\
 Para generar un reporte detallado en HTML:\
 _coverage html_\
 El resultado de éste último cuando se ejecutó en nuestra máquina se ha incluido en el repositorio.
+
+## Pruebas
+Se recomienda el uso de Postman para comprobar el funcionamiento de la aplicación.\
+A tal efecto se ha incluído el fichero _DevOpsServer.postman_collection.json_ que contiene una colección que con todos los casos de prueba.\
+
 
 ## Autores ✒️
 

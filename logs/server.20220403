@@ -1,0 +1,41 @@
+[03/04/2022 13:08:57.182]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 13:08:57.182]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 13:08:57.183]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(id, Column)
+[03/04/2022 13:08:57.183]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 13:08:57.183]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(name, Column)
+[03/04/2022 13:08:57.183]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(password, Column)
+[03/04/2022 13:08:57.184]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 13:08:57.184]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) constructed
+[03/04/2022 13:08:57.185]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) constructed
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 13:08:57.186]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 13:08:57.187]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 13:08:57.187]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 13:08:57.187]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 13:08:57.187]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 13:09:06.536]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:07.254]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:07.945]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:08.575]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:09.129]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:09.649]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:10.191]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:10.653]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:09:11.177]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:14.567]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:15.213]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:15.777]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:16.334]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:16.912]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:17.444]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:17.946]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:18.477]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:18.983]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:19.502]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:20.50]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 13:11:20.601]	 INFO 	[server.home:23]	 Acceso a Home

@@ -80,14 +80,6 @@ def check_file(fichero):
         print("Cargando datos de " + fichero)
         return 1
 
-def app_log_filename(self):
-    now = datetime.date.today()
-    return '/logs/server-'+now.strftime("%Y-%m-%d")
-
-def app_err_log_filename(self):
-    now = datetime.date.today()
-    return '/logs/error-'+now.strftime("%Y-%m-%d")
-
 
 # Funciones para el logging
 def configure_logging(app):
@@ -102,32 +94,32 @@ def configure_logging(app):
     console_handler.setFormatter(verbose_formatter())
     handlers.append(console_handler)
 
-    '''
     # Creamos un manejador para el fichero de trazas de la app
-    app_log_handler = logging.handlers.TimedRotatingFileHandler(filename=cwd + "/logs/filename",
-                                                                when='S',
-                                                                interval=5,
-                                                                backupCount=5)
-    app_log_handler.rotation_filename = app_log_filename
+    app_log_handler = logging.handlers.TimedRotatingFileHandler(filename=cwd + '/logs/server',
+                                                                when='midnight',
+                                                                interval=1,
+                                                                backupCount=14)
+    app_log_handler.suffix = "%Y%m%d"
     app_log_handler.setLevel(logging.INFO)
     app_log_handler.setFormatter(verbose_formatter())
     handlers.append(app_log_handler)
+
     #Creamos el manejador para el fichero de errores
-    app_err_log_handler = logging.handlers.TimedRotatingFileHandler(filename=cwd + "/logs/filename",
-                                                                    when='S',
-                                                                    interval=5,
-                                                                    backupCount=5)
-    app_err_log_handler.rotation_filename = app_err_log_filename
+    app_err_log_handler = logging.handlers.TimedRotatingFileHandler(filename=cwd + '/logs/error',
+                                                                    when='midnight',
+                                                                    interval=1,
+                                                                    backupCount=14)
+    app_err_log_handler.suffix = "%Y%m%d"
     app_err_log_handler.setLevel(logging.ERROR)
     app_err_log_handler.setFormatter(verbose_formatter())
     handlers.append(app_err_log_handler)
-    
-    '''
+
     # Asociamos cada uno de los handlers a cada uno de los loggers
     for l in loggers:
         for handler in handlers:
             l.addHandler(handler)
         l.propagate = False
+        l.setLevel(logging.DEBUG)
 
 
 def verbose_formatter():

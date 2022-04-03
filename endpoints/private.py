@@ -9,16 +9,27 @@ import jwt
 import uuid
 import datetime
 
-import config.default
-from server import db
-from models.entitys import User, Cadena, InvalidToken
-
 # Hacemos uso de la biblioteca unicodedata para tratar las tildes y caracteres epeciales
 import unicodedata
 
+# Librerias propias
+import config.default
+from server import db
+from models.entitys import User, Cadena, InvalidToken, EndpointUsage
+from utils.stopwatch import Stopwatch
+from utils.status import Status
 
 
 private_bp = Blueprint('private', __name__, template_folder='templates')
+
+def registrar_usage(endpoint_name, stopwatch):
+    stopwatch.stop_stopwatch()
+    new_usage = EndpointUsage(endpoint_name=endpoint_name,
+                          status=Status.SUCCES.value,
+                          response_time=stopwatch.elapsed_time,
+                          fecha_acc=stopwatch.creation_time)
+    db.session.add(new_usage)
+    db.session.commit()
 
 
 def token_required(f):
@@ -31,7 +42,7 @@ def token_required(f):
             token = request.headers['x-access-tokens']
 
         if not token:
-            return make_response(jsonify({'message': 'a valid token is missing'}), 403)
+            return make_response(jsonify({'message': 'A valid token is missing'}), 403)
 
         # Comprobamos que el token no haya sido marcado como inválido
         results = InvalidToken.query.filter_by(token_body=token).all()
@@ -49,7 +60,7 @@ def token_required(f):
 
 # El endpoint "almacena"
 '''
-El endpoint recibe la cadena como parámetro y la guarda en una nueva línea del fichero FILENAME
+El endpoint recibe la cadena como parámetro y la guarda en una nueva línea en la Base de Datos
 El nombre del parámetro es 'string'
 la petición tiene el formato /almacena?string
 Devuelve:
@@ -61,25 +72,46 @@ Devuelve:
 @private_bp.route("/almacena", methods=['POST'])
 @token_required
 def almacenar(current_user):
-    current_app.logger.info('Acceso a Almacena')
+    stopwatch = Stopwatch()
+    endpoint_name = "ALMACENA"
+    current_app.logger.debug('Acceso a Almacena')
     if request.method == 'POST':
         if 'string' in request.args:
             cadena = request.args.get('string')
-            with open(config.default.FILENAME, "a+") as f:
-                f.write(cadena + '\n')
-            data = {'code': 'SUCCESS', 'message': cadena + ' ADDED', 'userid': current_user.public_id}
-            return make_response(jsonify(data), 200)
+
+            try:
+                # Para el caso de uso
+                new_cadena = Cadena(text=cadena,
+                                    public_id_fk=current_user.public_id)
+                db.session.add(new_cadena)
+                db.session.commit()
+                data = {'code': 'SUCCESS', 'message': cadena + ' ADDED', 'userid': current_user.public_id}
+                current_app.logger.info(endpoint_name + "|" + data['message'] + "|" + data['userid'])
+
+                # Para el registro de uso
+                registrar_usage(endpoint_name, stopwatch)
+                return make_response(jsonify(data), 201)
+
+            except BaseException as err:
+                data = {'code': 'DB ERROR', 'message': err.args[0],
+                        'userid': current_user.public_id, 'cadena': cadena}
+                current_app.logger.error(endpoint_name + "|" + data['message'])
+                return make_response(jsonify(data), 500)
+
+
         else:
             data = {'code': 'BAD REQUEST', 'message': 'No se ha encontrado el parámetro "string"'}
+            current_app.logger.warn(endpoint_name + "|" + data['message'])
             return make_response(jsonify(data), 400)
-
+    else:
+        data = {'code': 'BAD REQUEST', 'message': 'Petición no válida: Use POST'}
+        current_app.logger.warn(endpoint_name + "|" + data['message'])
+        return make_response(jsonify(data), 400)
 
 # El endpoint "consulta"
 '''
-El endpoint recibe la cadena como parámetro y comprueba el número de veces que aparece dentro del fichero
-FILENAME
+El endpoint recibe la cadena como parámetro y comprueba el número de veces que aparece dentro de la Base de Datos
 El nombre del parámetro es 'string'
-Devuelve:
 Devuelve: 
     * una respuesta HTML 200 OK con un json en el cuerpo indicando el número de veces que se ha encontrado la palabra
     * una respuesta HTML 400 BAD REQUEST con un json en el cuerpo si la petición no es correctauna respuesta
@@ -89,14 +121,16 @@ Devuelve:
 @private_bp.route("/consulta", methods=['GET'])
 @token_required
 def consultar(current_user):
-    current_app.logger.info('Acceso a Consulta')
+    endpoint_name = "CONSULTA"
+    current_app.logger.debug('Acceso a Consulta')
     if request.method == 'GET':
         if 'string' in request.args:
             cadena = request.args.get('string')
             if " " not in cadena:
-                with open(config.default.FILENAME, "r") as f:
+                try:
+                    results = Cadena.query.all()
                     contador = 0
-                    for linea in f:
+                    for result in results:
                         '''
                         Usamos unicodedata.normalize() para eliminar las tildes
                         con la opcion NFKD para que lo descomponga en caracteres simples + símbolos aditivos
@@ -106,24 +140,37 @@ def consultar(current_user):
                         '''
                         cadena_aux = unicodedata.normalize('NFKD', cadena).encode('ASCII', 'ignore').decode(
                             'ASCII').casefold()
-                        linea_aux = unicodedata.normalize('NFKD', linea).encode('ASCII', 'ignore').decode(
+                        result_aux = unicodedata.normalize('NFKD', result.text).encode('ASCII', 'ignore').decode(
                             'ASCII').casefold()
-                        if cadena_aux in linea_aux:
+                        if cadena_aux in result_aux:
                             contador = contador + 1
-                data = {'code': 'SUCCESS', 'Lineas en las que aparece': contador, 'userid': current_user.public_id}
-                return make_response(jsonify(data), 200)
+
+                    data = {'code': 'SUCCESS', 'message': 'Líneas en las que aparece:' + str(contador), 'userid': current_user.public_id}
+                    current_app.logger.info(endpoint_name + "|" + data['message'] + "|" + data['userid'])
+                    return make_response(jsonify(data), 200)
+                except BaseException as err:
+                    data = {'code': 'DB ERROR', 'message': err.args[0],
+                            'userid': current_user.public_id, 'cadena': cadena}
+                    current_app.logger.error(endpoint_name + "|" + data['message'])
+                    return make_response(jsonify(data), 500)
             else:
                 data = {'code': 'BAD REQUEST', 'message': 'El parámetro debe ser una única palabra'}
+                current_app.logger.warn(endpoint_name + "|" + data['message'])
                 return make_response(jsonify(data), 400)
         else:
             data = {'code': 'BAD REQUEST', 'message': 'No se ha encontrado el parámetro string'}
+            current_app.logger.warn(endpoint_name + "|" + data['message'])
             return make_response(jsonify(data), 400)
-
+    else:
+        data = {'code': 'BAD REQUEST', 'message': 'Petición no válida: Use GET'}
+        current_app.logger.warn(endpoint_name + "|" + data['message'])
+        return make_response(jsonify(data), 400)
 
 @private_bp.route("/logout", methods=['GET', 'POST'])
 @token_required
 def logout(current_user):
-    current_app.logger.info('Acceso a Logout')
+    endpoint_name = "LOGOUT"
+    current_app.logger.debug('Acceso a Logout')
     token = request.headers['x-access-tokens']
     try:
         new_invalidToken = InvalidToken(token_body=token, public_id_fk=current_user.public_id)
@@ -131,10 +178,10 @@ def logout(current_user):
         db.session.commit()
         data = {'code': 'SUCCESS', 'message': 'Logout realizado con éxito',
                 'userid': current_user.public_id, 'tokenInvalidado': token}
+        current_app.logger.info(endpoint_name + "|" + data['message']+"|"+data['userid'])
         return make_response(jsonify(data), 200)
     except BaseException as err:
-        err
         data = {'code': 'ERROR', 'message': err.args[0],
                 'userid': current_user.public_id, 'token': token}
-        current_app.logger.error(err.args[0])
+        current_app.logger.error(endpoint_name + "|" + data['message'])
         return make_response(jsonify(data), 500)

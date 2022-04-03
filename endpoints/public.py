@@ -1,6 +1,7 @@
 '''
 
 '''
+import os
 
 from flask import request, jsonify, make_response, current_app
 from flask import Blueprint
@@ -78,25 +79,31 @@ def get_all_users():
 @public_bp.route('/ready')
 def ready_check():
     current_app.logger.info('Acceso a ReadyCheck')
-    if db.connect():
-        db.close()
-        data = {'code': 'SUCCESS', 'message': 'ALL OK'}
-        return make_response(jsonify(data), 200)
-    else:
-        data = {'code': 'ERROR', 'message': 'DATABASE IS NOT CONNECTED'}
-        return make_response(jsonify(data), 503)
-
-
-@public_bp.route('/health')
-def health_check():
-    current_app.logger.info('Acceso a HealthCheck')
-    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
-    if (stat == 0):  # if 0 (active), print "Active"
+    if database_works() and loggin_works():
         data = {'code': 'SUCCESS', 'message': 'ALL OK'}
         return make_response(jsonify(data), 200)
     else:
         data = {'code': 'ERROR', 'message': 'SERVICE IS NOT RUNNING CORRECTLY'}
         return make_response(jsonify(data), 503)
+
+
+def database_works():
+    try:
+        users = User.query.all()
+        return True
+    except:
+        return False
+
+def loggin_works():
+    try:
+        current_app.logger.info('Checking if loggin works as expected')
+        return True
+    except:
+        return False
+
+@public_bp.route('/health')
+def health_check():
+    current_app.logger.info('Acceso a HealthCheck')
 
 @public_bp.route('/metrics')
 def metrics_show():

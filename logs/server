@@ -61,3 +61,404 @@
 [03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
 [03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
 [03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 14:56:26.209]	 INFO 	[server.health_check:92]	 Acceso a HealthCheck
+[03/04/2022 14:56:26.212]	 ERROR 	[server.log_exception:1891]	 Exception on /health [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 93, in health_check
+    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado
+[03/04/2022 14:56:33.999]	 INFO 	[server.health_check:92]	 Acceso a HealthCheck
+[03/04/2022 14:56:34.2]	 ERROR 	[server.log_exception:1891]	 Exception on /health [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 93, in health_check
+    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado
+[03/04/2022 14:56:39.77]	 INFO 	[server.ready_check:80]	 Acceso a ReadyCheck
+[03/04/2022 14:56:39.77]	 ERROR 	[server.log_exception:1891]	 Exception on /ready [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 81, in ready_check
+    if db.connect():
+AttributeError: 'SQLAlchemy' object has no attribute 'connect'
+[03/04/2022 14:56:47.516]	 INFO 	[server.decorator:27]	 Comprobando Token
+[03/04/2022 14:57:22.757]	 INFO 	[server.health_check:92]	 Acceso a HealthCheck
+[03/04/2022 14:57:22.759]	 ERROR 	[server.log_exception:1891]	 Exception on /health [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 93, in health_check
+    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado
+[03/04/2022 16:37:50.335]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 16:37:50.335]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 16:37:50.335]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 16:37:50.336]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 16:37:50.336]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 16:37:50.336]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 16:37:50.336]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 16:37:50.336]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 16:37:50.337]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 16:37:50.337]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 16:37:50.337]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 16:37:50.338]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 16:37:50.338]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 16:37:50.338]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 16:37:50.339]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 16:37:50.339]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 16:37:50.339]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 16:37:50.339]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 16:37:50.339]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 16:37:50.339]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 16:38:00.726]	 INFO 	[server.health_check:93]	 Acceso a HealthCheck
+[03/04/2022 16:38:00.728]	 ERROR 	[server.log_exception:1891]	 Exception on /health [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 94, in health_check
+    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado
+[03/04/2022 16:38:11.407]	 INFO 	[server.health_check:93]	 Acceso a HealthCheck
+[03/04/2022 16:38:11.410]	 ERROR 	[server.log_exception:1891]	 Exception on /health [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 94, in health_check
+    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\soren\anaconda3\lib\subprocess.py", line 1420, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] El sistema no puede encontrar el archivo especificado
+[03/04/2022 16:53:31.959]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 16:53:31.960]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 16:53:31.960]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 16:53:31.960]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 16:53:31.962]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 16:53:31.962]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 16:53:31.963]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 16:53:31.963]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 16:53:31.965]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 16:53:31.965]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 16:53:31.965]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 16:53:31.965]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 16:53:31.965]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 16:53:31.966]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 16:53:31.967]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 16:53:31.968]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 16:53:31.968]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 16:53:31.968]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 16:53:31.969]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 16:53:31.969]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 16:53:35.300]	 INFO 	[server.health_check:93]	 Acceso a HealthCheck
+[03/04/2022 16:54:13.247]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 16:54:13.247]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 16:54:13.248]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 16:54:13.248]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 16:54:13.248]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 16:54:13.248]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 16:54:13.248]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 16:54:13.248]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 16:54:13.249]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 16:54:13.249]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 16:54:13.249]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 16:54:13.249]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 16:54:13.250]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 16:54:13.250]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 16:54:13.250]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 16:54:13.250]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 16:54:13.251]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 16:54:13.251]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 16:54:13.251]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 16:54:13.251]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 16:54:25.133]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 16:54:25.134]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 16:54:25.136]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 16:54:25.136]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 16:54:25.136]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 16:54:25.136]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 16:54:25.136]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 16:54:25.136]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 16:54:25.137]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 16:54:25.137]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 16:54:25.138]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 16:54:25.138]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 16:54:25.138]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 16:54:25.139]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 16:54:29.497]	 INFO 	[server.health_check:93]	 Acceso a HealthCheck
+[03/04/2022 17:05:58.828]	 INFO 	[server.ready_check:81]	 Acceso a ReadyCheck
+[03/04/2022 17:05:58.829]	 ERROR 	[server.log_exception:1891]	 Exception on /ready [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 82, in ready_check
+    if db.connect():
+AttributeError: 'SQLAlchemy' object has no attribute 'connect'
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 17:43:36.200]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 17:43:36.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 17:43:49.825]	 INFO 	[server.health_check:93]	 Acceso a HealthCheck
+[03/04/2022 17:43:49.825]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _post_configure_properties() started
+[03/04/2022 17:43:49.825]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop cadenas_ingresadas
+[03/04/2022 17:43:49.826]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 User.cadenas_ingresadas setup primary join users.public_id = cadenas.public_id_fk
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 User.cadenas_ingresadas setup secondary join None
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 User.cadenas_ingresadas synchronize pairs [(users.public_id => cadenas.public_id_fk)]
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 User.cadenas_ingresadas secondary synchronize pairs []
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 User.cadenas_ingresadas local/remote pairs [(users.public_id / cadenas.public_id_fk)]
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 User.cadenas_ingresadas remote columns [cadenas.public_id_fk]
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 User.cadenas_ingresadas local columns [users.public_id]
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 User.cadenas_ingresadas relationship direction symbol('ONETOMANY')
+[03/04/2022 17:43:49.849]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 User.cadenas_ingresadas lazy loading clause :param_1 = cadenas.public_id_fk
+[03/04/2022 17:43:49.850]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop tokens_expirados
+[03/04/2022 17:43:49.850]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 User.tokens_expirados setup primary join users.public_id = invalidtokens.public_id_fk
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 User.tokens_expirados setup secondary join None
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 User.tokens_expirados synchronize pairs [(users.public_id => invalidtokens.public_id_fk)]
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 User.tokens_expirados secondary synchronize pairs []
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 User.tokens_expirados local/remote pairs [(users.public_id / invalidtokens.public_id_fk)]
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 User.tokens_expirados remote columns [invalidtokens.public_id_fk]
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 User.tokens_expirados local columns [users.public_id]
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 User.tokens_expirados relationship direction symbol('ONETOMANY')
+[03/04/2022 17:43:49.851]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 User.tokens_expirados lazy loading clause :param_1 = invalidtokens.public_id_fk
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop id
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop public_id
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop name
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop password
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _post_configure_properties() complete
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _post_configure_properties() started
+[03/04/2022 17:43:49.852]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop ingresada_por
+[03/04/2022 17:43:49.853]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 Cadena.ingresada_por setup primary join users.public_id = cadenas.public_id_fk
+[03/04/2022 17:43:49.862]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 Cadena.ingresada_por setup secondary join None
+[03/04/2022 17:43:49.862]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 Cadena.ingresada_por synchronize pairs [(users.public_id => cadenas.public_id_fk)]
+[03/04/2022 17:43:49.862]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 Cadena.ingresada_por secondary synchronize pairs []
+[03/04/2022 17:43:49.862]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 Cadena.ingresada_por local/remote pairs [(cadenas.public_id_fk / users.public_id)]
+[03/04/2022 17:43:49.862]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 Cadena.ingresada_por remote columns [users.public_id]
+[03/04/2022 17:43:49.863]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 Cadena.ingresada_por local columns [cadenas.public_id_fk]
+[03/04/2022 17:43:49.863]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 Cadena.ingresada_por relationship direction symbol('MANYTOONE')
+[03/04/2022 17:43:49.863]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 Cadena.ingresada_por lazy loading clause users.public_id = :param_1
+[03/04/2022 17:43:49.864]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop id
+[03/04/2022 17:43:49.864]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop text
+[03/04/2022 17:43:49.864]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop public_id_fk
+[03/04/2022 17:43:49.864]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _post_configure_properties() complete
+[03/04/2022 17:43:49.864]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _post_configure_properties() started
+[03/04/2022 17:43:49.864]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop pertenece_a
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 InvalidToken.pertenece_a setup primary join users.public_id = invalidtokens.public_id_fk
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 InvalidToken.pertenece_a setup secondary join None
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 InvalidToken.pertenece_a synchronize pairs [(users.public_id => invalidtokens.public_id_fk)]
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 InvalidToken.pertenece_a secondary synchronize pairs []
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 InvalidToken.pertenece_a local/remote pairs [(invalidtokens.public_id_fk / users.public_id)]
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 InvalidToken.pertenece_a remote columns [users.public_id]
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 InvalidToken.pertenece_a local columns [invalidtokens.public_id_fk]
+[03/04/2022 17:43:49.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 InvalidToken.pertenece_a relationship direction symbol('MANYTOONE')
+[03/04/2022 17:43:49.866]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 InvalidToken.pertenece_a lazy loading clause users.public_id = :param_1
+[03/04/2022 17:43:49.866]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop id
+[03/04/2022 17:43:49.866]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop token_body
+[03/04/2022 17:43:49.866]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop public_id_fk
+[03/04/2022 17:43:49.866]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _post_configure_properties() complete
+[03/04/2022 17:43:49.899]	 INFO 	[sqlalchemy.engine.Engine._log_info:136]	 BEGIN (implicit)
+[03/04/2022 17:43:49.900]	 INFO 	[sqlalchemy.engine.Engine._log_info:136]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users
+[03/04/2022 17:43:49.900]	 INFO 	[sqlalchemy.engine.Engine._log_info:136]	 [generated in 0.00018s] ()
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 17:57:03.656]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 17:57:06.806]	 INFO 	[server.health_check:106]	 Acceso a HealthCheck
+[03/04/2022 17:57:06.806]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _post_configure_properties() started
+[03/04/2022 17:57:06.806]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop cadenas_ingresadas
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 User.cadenas_ingresadas setup primary join users.public_id = cadenas.public_id_fk
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 User.cadenas_ingresadas setup secondary join None
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 User.cadenas_ingresadas synchronize pairs [(users.public_id => cadenas.public_id_fk)]
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 User.cadenas_ingresadas secondary synchronize pairs []
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 User.cadenas_ingresadas local/remote pairs [(users.public_id / cadenas.public_id_fk)]
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 User.cadenas_ingresadas remote columns [cadenas.public_id_fk]
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 User.cadenas_ingresadas local columns [users.public_id]
+[03/04/2022 17:57:06.807]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 User.cadenas_ingresadas relationship direction symbol('ONETOMANY')
+[03/04/2022 17:57:06.808]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 User.cadenas_ingresadas lazy loading clause :param_1 = cadenas.public_id_fk
+[03/04/2022 17:57:06.808]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop tokens_expirados
+[03/04/2022 17:57:06.808]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 User.tokens_expirados setup primary join users.public_id = invalidtokens.public_id_fk
+[03/04/2022 17:57:06.809]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 User.tokens_expirados setup secondary join None
+[03/04/2022 17:57:06.809]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 User.tokens_expirados synchronize pairs [(users.public_id => invalidtokens.public_id_fk)]
+[03/04/2022 17:57:06.809]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 User.tokens_expirados secondary synchronize pairs []
+[03/04/2022 17:57:06.809]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 User.tokens_expirados local/remote pairs [(users.public_id / invalidtokens.public_id_fk)]
+[03/04/2022 17:57:06.809]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 User.tokens_expirados remote columns [invalidtokens.public_id_fk]
+[03/04/2022 17:57:06.811]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 User.tokens_expirados local columns [users.public_id]
+[03/04/2022 17:57:06.811]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 User.tokens_expirados relationship direction symbol('ONETOMANY')
+[03/04/2022 17:57:06.811]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 User.tokens_expirados lazy loading clause :param_1 = invalidtokens.public_id_fk
+[03/04/2022 17:57:06.811]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop id
+[03/04/2022 17:57:06.812]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop public_id
+[03/04/2022 17:57:06.812]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop name
+[03/04/2022 17:57:06.812]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) initialize prop password
+[03/04/2022 17:57:06.812]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _post_configure_properties() complete
+[03/04/2022 17:57:06.812]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _post_configure_properties() started
+[03/04/2022 17:57:06.815]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop ingresada_por
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 Cadena.ingresada_por setup primary join users.public_id = cadenas.public_id_fk
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 Cadena.ingresada_por setup secondary join None
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 Cadena.ingresada_por synchronize pairs [(users.public_id => cadenas.public_id_fk)]
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 Cadena.ingresada_por secondary synchronize pairs []
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 Cadena.ingresada_por local/remote pairs [(cadenas.public_id_fk / users.public_id)]
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 Cadena.ingresada_por remote columns [users.public_id]
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 Cadena.ingresada_por local columns [cadenas.public_id_fk]
+[03/04/2022 17:57:06.816]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 Cadena.ingresada_por relationship direction symbol('MANYTOONE')
+[03/04/2022 17:57:06.818]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 Cadena.ingresada_por lazy loading clause users.public_id = :param_1
+[03/04/2022 17:57:06.818]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop id
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop text
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) initialize prop public_id_fk
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _post_configure_properties() complete
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _post_configure_properties() started
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop pertenece_a
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2651]	 InvalidToken.pertenece_a setup primary join users.public_id = invalidtokens.public_id_fk
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2652]	 InvalidToken.pertenece_a setup secondary join None
+[03/04/2022 17:57:06.819]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2653]	 InvalidToken.pertenece_a synchronize pairs [(users.public_id => invalidtokens.public_id_fk)]
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2660]	 InvalidToken.pertenece_a secondary synchronize pairs []
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2668]	 InvalidToken.pertenece_a local/remote pairs [(invalidtokens.public_id_fk / users.public_id)]
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2675]	 InvalidToken.pertenece_a remote columns [users.public_id]
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2680]	 InvalidToken.pertenece_a local columns [invalidtokens.public_id_fk]
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 InvalidToken.pertenece_a relationship direction symbol('MANYTOONE')
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:665]	 InvalidToken.pertenece_a lazy loading clause users.public_id = :param_1
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop id
+[03/04/2022 17:57:06.820]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop token_body
+[03/04/2022 17:57:06.830]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) initialize prop public_id_fk
+[03/04/2022 17:57:06.831]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _post_configure_properties() complete
+[03/04/2022 17:57:06.845]	 INFO 	[sqlalchemy.engine.Engine._log_info:136]	 BEGIN (implicit)
+[03/04/2022 17:57:06.847]	 INFO 	[sqlalchemy.engine.Engine._log_info:136]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users
+[03/04/2022 17:57:06.847]	 INFO 	[sqlalchemy.engine.Engine._log_info:136]	 [generated in 0.00013s] ()

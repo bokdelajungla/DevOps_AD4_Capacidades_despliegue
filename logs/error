@@ -114,3 +114,282 @@ sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled 
 [SQL: INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)]
 [parameters: ('ALMACENA', <Status.SUCCES: 'SUCCESS'>, 8140.0, '2022-04-03 18:04:02.262591')]
 (Background on this error at: https://sqlalche.me/e/14/rvf5) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[03/04/2022 19:58:49.394]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[03/04/2022 19:59:30.264]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 112, in metrics_show
+    print("cuantas cadenas hay" + results)
+TypeError: can only concatenate str (not "int") to str
+[03/04/2022 20:00:04.472]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[03/04/2022 20:08:33.284]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 850, in __getattr__
+    return getattr(self.comparator, key)
+AttributeError: 'Comparator' object has no attribute 'count'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\orm\attributes.py", line 327, in __getattr__
+    return getattr(self.comparator, key)
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1240, in __getattr__
+    return self._fallback_getattr(key)
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\orm\properties.py", line 427, in _fallback_getattr
+    return getattr(self.__clause_element__(), key)
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 852, in __getattr__
+    util.raise_(
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+AttributeError: Neither 'AnnotatedColumn' object nor 'Comparator' object has an attribute 'count'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 112, in metrics_show
+    resultConsultaHits = EndpointUsage.id.count()
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\orm\attributes.py", line 329, in __getattr__
+    util.raise_(
+  File "C:\Users\soren\anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+AttributeError: Neither 'InstrumentedAttribute' object nor 'Comparator' object associated with EndpointUsage.id has an attribute 'count'
+[03/04/2022 20:09:03.953]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[03/04/2022 20:10:20.964]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[03/04/2022 20:10:49.665]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[03/04/2022 20:19:02.886]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+[03/04/2022 20:24:59.555]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = EndpointUsage.query(func.avg(EndpointUsage.response_time).label('average'))
+TypeError: 'BaseQuery' object is not callable
+[03/04/2022 20:25:15.101]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time).label('average'))
+NameError: name 'session' is not defined
+[03/04/2022 20:34:57.581]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = EndpointUsage.query(func.avg(EndpointUsage.response_time).label('average'))
+TypeError: 'BaseQuery' object is not callable
+[03/04/2022 20:36:56.200]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = EndpointUsage.query(func.avg(EndpointUsage.response_time).label('average'))
+TypeError: 'BaseQuery' object is not callable
+[03/04/2022 20:39:56.870]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time.label('average')))
+AttributeError: 'SecureCookieSession' object has no attribute 'query'
+[03/04/2022 20:41:13.202]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time).label('average'))
+AttributeError: 'SecureCookieSession' object has no attribute 'query'
+[03/04/2022 20:44:22.195]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time).label('average'))
+AttributeError: 'SecureCookieSession' object has no attribute 'query'
+[03/04/2022 20:46:05.63]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time))
+AttributeError: 'SecureCookieSession' object has no attribute 'query'
+[03/04/2022 20:53:43.681]	 ERROR 	[server.log_exception:1891]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\soren\anaconda3\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\soren\Documents\GitHub\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 119, in metrics_show
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time).label('average')).filter(EndpointUsage.response_time == EndpointUsage.response_time)
+AttributeError: 'SecureCookieSession' object has no attribute 'query'

@@ -2,16 +2,17 @@
 
 '''
 
-from flask import request, jsonify, make_response, current_app
+from flask import request, jsonify, make_response, current_app, session
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import uuid
 import datetime
+from sqlalchemy.sql import func
 
 import config.default
 from server import db
-from models.entitys import User
+from models.entitys import User, Cadena, EndpointUsage
 
 public_bp = Blueprint('public', __name__, template_folder='templates')
 
@@ -77,8 +78,27 @@ def get_all_users():
 @public_bp.route('/ready')
 def ready_check():
     current_app.logger.info('Acceso a ReadyCheck')
-    data = {'code': 'SUCCESS', 'message': 'ALL OK'}
-    return make_response(jsonify(data), 200)
+    if database_works() and loggin_works():
+        data = {'code': 'SUCCESS', 'message': 'ALL OK'}
+        return make_response(jsonify(data), 200)
+    else:
+        data = {'code': 'ERROR', 'message': 'SERVICE IS NOT RUNNING CORRECTLY'}
+        return make_response(jsonify(data), 503)
+
+
+def database_works():
+    try:
+        users = User.query.all()
+        return True
+    except:
+        return False
+
+def loggin_works():
+    try:
+        current_app.logger.info('Checking if loggin works as expected')
+        return True
+    except:
+        return False
 
 @public_bp.route('/health')
 def health_check():
@@ -89,4 +109,30 @@ def health_check():
 @public_bp.route('/metrics')
 def metrics_show():
     current_app.logger.info('Acceso a Metrics')
-    return None
+    print("--------------------------")
+    resultsEntries = Cadena.query.count()
+    print(resultsEntries)
+    print("--------------------------")
+    resultsHits = EndpointUsage.query.count()
+    print(resultsHits)
+    print("--------------------------")
+    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time).label('average')).filter(EndpointUsage.response_time == EndpointUsage.response_time)
+    print(resultsAverageResponse)
+
+    data = {
+    'metrics': [
+    {
+      'name': 'consulta_avg_response_time',
+      "value": resultsAverageResponse
+    },
+    {
+      'name': 'consulta_hits',
+      'value': resultsHits
+    },
+    {
+      'name': 'db_entries',
+      'value': resultsEntries
+    }
+    ]
+    }
+    return make_response(jsonify(data), 200)

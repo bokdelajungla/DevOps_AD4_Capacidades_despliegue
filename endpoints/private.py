@@ -17,19 +17,10 @@ import config.default
 from server import db
 from models.entitys import User, Cadena, InvalidToken, EndpointUsage
 from utils.stopwatch import Stopwatch
-from utils.status import Status
+from utils.status import Status, registrar_usage
 
 
 private_bp = Blueprint('private', __name__, template_folder='templates')
-
-def registrar_usage(endpoint_name, stopwatch):
-    stopwatch.stop_stopwatch()
-    new_usage = EndpointUsage(endpoint_name=endpoint_name,
-                          status=Status.SUCCES.value,
-                          response_time=stopwatch.elapsed_time,
-                          fecha_acc=stopwatch.creation_time)
-    db.session.add(new_usage)
-    db.session.commit()
 
 
 def token_required(f):
@@ -89,16 +80,18 @@ def almacenar(current_user):
                 current_app.logger.info(endpoint_name + "|" + data['message'] + "|" + data['userid'])
 
                 # Para el registro de uso
-                registrar_usage(endpoint_name, stopwatch)
+                registrar_usage(endpoint_name, Status.SUCCES.value, stopwatch)
+
                 return make_response(jsonify(data), 201)
 
             except BaseException as err:
                 data = {'code': 'DB ERROR', 'message': err.args[0],
                         'userid': current_user.public_id, 'cadena': cadena}
                 current_app.logger.error(endpoint_name + "|" + data['message'])
+                # Para el registro de uso
+                registrar_usage(endpoint_name, Status.FAIL.value, stopwatch)
+
                 return make_response(jsonify(data), 500)
-
-
         else:
             data = {'code': 'BAD REQUEST', 'message': 'No se ha encontrado el parámetro "string"'}
             current_app.logger.warn(endpoint_name + "|" + data['message'])
@@ -121,6 +114,7 @@ Devuelve:
 @private_bp.route("/consulta", methods=['GET'])
 @token_required
 def consultar(current_user):
+    stopwatch = Stopwatch()
     endpoint_name = "CONSULTA"
     current_app.logger.debug('Acceso a Consulta')
     if request.method == 'GET':
@@ -128,6 +122,7 @@ def consultar(current_user):
             cadena = request.args.get('string')
             if " " not in cadena:
                 try:
+                    # Para el caso de uso
                     results = Cadena.query.all()
                     contador = 0
                     for result in results:
@@ -145,13 +140,20 @@ def consultar(current_user):
                         if cadena_aux in result_aux:
                             contador = contador + 1
 
-                    data = {'code': 'SUCCESS', 'message': 'Líneas en las que aparece:' + str(contador), 'userid': current_user.public_id}
+                    data = {'code': 'SUCCESS', 'message': 'Líneas en las que aparece: ' + str(contador), 'userid': current_user.public_id}
                     current_app.logger.info(endpoint_name + "|" + data['message'] + "|" + data['userid'])
+
+                    # Para el registro de uso
+                    registrar_usage(endpoint_name, Status.SUCCES.value, stopwatch)
+
                     return make_response(jsonify(data), 200)
+
                 except BaseException as err:
                     data = {'code': 'DB ERROR', 'message': err.args[0],
                             'userid': current_user.public_id, 'cadena': cadena}
                     current_app.logger.error(endpoint_name + "|" + data['message'])
+                    # Para el registro de uso
+                    registrar_usage(endpoint_name, Status.FAIL.value, stopwatch)
                     return make_response(jsonify(data), 500)
             else:
                 data = {'code': 'BAD REQUEST', 'message': 'El parámetro debe ser una única palabra'}
@@ -166,9 +168,10 @@ def consultar(current_user):
         current_app.logger.warn(endpoint_name + "|" + data['message'])
         return make_response(jsonify(data), 400)
 
-@private_bp.route("/logout", methods=['GET', 'POST'])
+@private_bp.route("/logout", methods=['GET'])
 @token_required
 def logout(current_user):
+    stopwatch = Stopwatch()
     endpoint_name = "LOGOUT"
     current_app.logger.debug('Acceso a Logout')
     token = request.headers['x-access-tokens']
@@ -179,9 +182,13 @@ def logout(current_user):
         data = {'code': 'SUCCESS', 'message': 'Logout realizado con éxito',
                 'userid': current_user.public_id, 'tokenInvalidado': token}
         current_app.logger.info(endpoint_name + "|" + data['message']+"|"+data['userid'])
+        # Para el registro de uso
+        registrar_usage(endpoint_name, Status.SUCCES.value, stopwatch)
         return make_response(jsonify(data), 200)
     except BaseException as err:
         data = {'code': 'ERROR', 'message': err.args[0],
                 'userid': current_user.public_id, 'token': token}
         current_app.logger.error(endpoint_name + "|" + data['message'])
+        # Para el registro de uso
+        registrar_usage(endpoint_name, Status.FAIL.value, stopwatch)
         return make_response(jsonify(data), 500)

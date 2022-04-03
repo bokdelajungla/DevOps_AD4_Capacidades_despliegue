@@ -1048,3 +1048,234 @@ WHERE users.id = ?
 [03/04/2022 18:08:48.966]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
 [03/04/2022 18:08:48.967]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00068s] ('ALMACENA', 'SUCCES', 14621.0, '2022-04-03 18:07:50.512492')
 [03/04/2022 18:08:48.969]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:19:39.631]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 20:19:39.631]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 20:19:39.631]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(id, Column)
+[03/04/2022 20:19:39.632]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 20:19:39.632]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(name, Column)
+[03/04/2022 20:19:39.633]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(password, Column)
+[03/04/2022 20:19:39.633]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 20:19:39.633]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) constructed
+[03/04/2022 20:19:39.636]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 20:19:39.637]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 20:19:39.637]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 20:19:39.637]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 20:19:39.638]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 20:19:39.638]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) constructed
+[03/04/2022 20:19:39.640]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 20:19:39.641]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 20:19:39.641]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 20:19:39.642]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 20:19:39.642]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 20:19:39.642]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 20:19:39.645]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(id, Column)
+[03/04/2022 20:19:39.645]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(endpoint_name, Column)
+[03/04/2022 20:19:39.645]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(status, Column)
+[03/04/2022 20:19:39.646]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(response_time, Column)
+[03/04/2022 20:19:39.646]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(fecha_acc, Column)
+[03/04/2022 20:19:39.647]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<endpointusage>, primary_key=True, nullable=False)])
+[03/04/2022 20:19:39.647]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) constructed
+[03/04/2022 20:19:50.861]	 INFO 	[server.signup_user:46]	 Acceso a SignUp
+[03/04/2022 20:19:50.862]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _post_configure_properties() started
+[03/04/2022 20:19:50.862]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) initialize prop cadenas_ingresadas
+[03/04/2022 20:19:50.864]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2661]	 User.cadenas_ingresadas setup primary join users.public_id = cadenas.public_id_fk
+[03/04/2022 20:19:50.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2662]	 User.cadenas_ingresadas setup secondary join None
+[03/04/2022 20:19:50.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2663]	 User.cadenas_ingresadas synchronize pairs [(users.public_id => cadenas.public_id_fk)]
+[03/04/2022 20:19:50.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2670]	 User.cadenas_ingresadas secondary synchronize pairs []
+[03/04/2022 20:19:50.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2678]	 User.cadenas_ingresadas local/remote pairs [(users.public_id / cadenas.public_id_fk)]
+[03/04/2022 20:19:50.865]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 User.cadenas_ingresadas remote columns [cadenas.public_id_fk]
+[03/04/2022 20:19:50.866]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2690]	 User.cadenas_ingresadas local columns [users.public_id]
+[03/04/2022 20:19:50.866]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2695]	 User.cadenas_ingresadas relationship direction symbol('ONETOMANY')
+[03/04/2022 20:19:50.867]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:685]	 User.cadenas_ingresadas lazy loading clause :param_1 = cadenas.public_id_fk
+[03/04/2022 20:19:50.869]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) initialize prop tokens_expirados
+[03/04/2022 20:19:50.871]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2661]	 User.tokens_expirados setup primary join users.public_id = invalidtokens.public_id_fk
+[03/04/2022 20:19:50.871]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2662]	 User.tokens_expirados setup secondary join None
+[03/04/2022 20:19:50.871]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2663]	 User.tokens_expirados synchronize pairs [(users.public_id => invalidtokens.public_id_fk)]
+[03/04/2022 20:19:50.872]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2670]	 User.tokens_expirados secondary synchronize pairs []
+[03/04/2022 20:19:50.872]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2678]	 User.tokens_expirados local/remote pairs [(users.public_id / invalidtokens.public_id_fk)]
+[03/04/2022 20:19:50.872]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 User.tokens_expirados remote columns [invalidtokens.public_id_fk]
+[03/04/2022 20:19:50.873]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2690]	 User.tokens_expirados local columns [users.public_id]
+[03/04/2022 20:19:50.873]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2695]	 User.tokens_expirados relationship direction symbol('ONETOMANY')
+[03/04/2022 20:19:50.873]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:685]	 User.tokens_expirados lazy loading clause :param_1 = invalidtokens.public_id_fk
+[03/04/2022 20:19:50.874]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) initialize prop id
+[03/04/2022 20:19:50.875]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) initialize prop public_id
+[03/04/2022 20:19:50.875]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) initialize prop name
+[03/04/2022 20:19:50.875]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) initialize prop password
+[03/04/2022 20:19:50.875]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _post_configure_properties() complete
+[03/04/2022 20:19:50.876]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _post_configure_properties() started
+[03/04/2022 20:19:50.876]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) initialize prop ingresada_por
+[03/04/2022 20:19:50.877]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2661]	 Cadena.ingresada_por setup primary join users.public_id = cadenas.public_id_fk
+[03/04/2022 20:19:50.877]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2662]	 Cadena.ingresada_por setup secondary join None
+[03/04/2022 20:19:50.878]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2663]	 Cadena.ingresada_por synchronize pairs [(users.public_id => cadenas.public_id_fk)]
+[03/04/2022 20:19:50.878]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2670]	 Cadena.ingresada_por secondary synchronize pairs []
+[03/04/2022 20:19:50.878]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2678]	 Cadena.ingresada_por local/remote pairs [(cadenas.public_id_fk / users.public_id)]
+[03/04/2022 20:19:50.878]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 Cadena.ingresada_por remote columns [users.public_id]
+[03/04/2022 20:19:50.879]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2690]	 Cadena.ingresada_por local columns [cadenas.public_id_fk]
+[03/04/2022 20:19:50.879]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2695]	 Cadena.ingresada_por relationship direction symbol('MANYTOONE')
+[03/04/2022 20:19:50.879]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:685]	 Cadena.ingresada_por lazy loading clause users.public_id = :param_1
+[03/04/2022 20:19:50.881]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) initialize prop id
+[03/04/2022 20:19:50.881]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) initialize prop text
+[03/04/2022 20:19:50.882]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) initialize prop public_id_fk
+[03/04/2022 20:19:50.882]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _post_configure_properties() complete
+[03/04/2022 20:19:50.882]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _post_configure_properties() started
+[03/04/2022 20:19:50.882]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) initialize prop pertenece_a
+[03/04/2022 20:19:50.884]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2661]	 InvalidToken.pertenece_a setup primary join users.public_id = invalidtokens.public_id_fk
+[03/04/2022 20:19:50.884]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2662]	 InvalidToken.pertenece_a setup secondary join None
+[03/04/2022 20:19:50.885]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2663]	 InvalidToken.pertenece_a synchronize pairs [(users.public_id => invalidtokens.public_id_fk)]
+[03/04/2022 20:19:50.885]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2670]	 InvalidToken.pertenece_a secondary synchronize pairs []
+[03/04/2022 20:19:50.885]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2678]	 InvalidToken.pertenece_a local/remote pairs [(invalidtokens.public_id_fk / users.public_id)]
+[03/04/2022 20:19:50.885]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2685]	 InvalidToken.pertenece_a remote columns [users.public_id]
+[03/04/2022 20:19:50.886]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2690]	 InvalidToken.pertenece_a local columns [invalidtokens.public_id_fk]
+[03/04/2022 20:19:50.886]	 INFO 	[sqlalchemy.orm.relationships.RelationshipProperty._log_joins:2695]	 InvalidToken.pertenece_a relationship direction symbol('MANYTOONE')
+[03/04/2022 20:19:50.887]	 INFO 	[sqlalchemy.orm.strategies.LazyLoader.__init__:685]	 InvalidToken.pertenece_a lazy loading clause users.public_id = :param_1
+[03/04/2022 20:19:50.888]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) initialize prop id
+[03/04/2022 20:19:50.888]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) initialize prop token_body
+[03/04/2022 20:19:50.889]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) initialize prop public_id_fk
+[03/04/2022 20:19:50.889]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _post_configure_properties() complete
+[03/04/2022 20:19:50.889]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _post_configure_properties() started
+[03/04/2022 20:19:50.889]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) initialize prop id
+[03/04/2022 20:19:50.890]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) initialize prop endpoint_name
+[03/04/2022 20:19:50.890]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) initialize prop status
+[03/04/2022 20:19:50.890]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) initialize prop response_time
+[03/04/2022 20:19:50.891]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) initialize prop fecha_acc
+[03/04/2022 20:19:50.891]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _post_configure_properties() complete
+[03/04/2022 20:19:51.19]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:19:51.21]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO users (public_id, name, password) VALUES (?, ?, ?)
+[03/04/2022 20:19:51.22]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00097s] ('49f3c779-377f-4066-bc81-425ae991d708', 'Jorge', 'sha256$6qsBBh5EtYpeqs1a$9ce580a9d6980d3906e85a1b87d24c7af944feaed9612ca2226b8e7f8c6eafbb')
+[03/04/2022 20:19:51.25]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:19:55.83]	 INFO 	[server.login_user:29]	 Acceso a Login
+[03/04/2022 20:19:58.62]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:19:58.65]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.name = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:19:58.66]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00034s] ('Jorge', 1, 0)
+[03/04/2022 20:20:14.491]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:20:17.122]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:20:17.124]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:20:17.124]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00029s] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMjA3OTh9.FLXOXBWc8jiB6zDfCCwJQjBU7yqJdQQDAyVTKW33Y4o',)
+[03/04/2022 20:20:17.128]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.public_id = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:20:17.128]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00036s] ('f769cb76-753e-4d81-b6e3-4d565b5b0466', 1, 0)
+[03/04/2022 20:20:17.132]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT cadenas.id AS cadenas_id, cadenas.text AS cadenas_text, cadenas.public_id_fk AS cadenas_public_id_fk 
+FROM cadenas
+[03/04/2022 20:20:17.132]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00033s] ()
+[03/04/2022 20:20:17.134]	 INFO 	[server.consultar:144]	 CONSULTA|Líneas en las que aparece:2|f769cb76-753e-4d81-b6e3-4d565b5b0466
+[03/04/2022 20:20:17.139]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
+[03/04/2022 20:20:17.140]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00077s] ('CONSULTA', 'SUCCESS', 5.0, '2022-04-03 20:20:17.130585')
+[03/04/2022 20:20:17.142]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:20:59.259]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:21:02.474]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:21:02.474]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:21:02.474]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 45.35s ago] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMTI2MTZ9.iYTyQ3SAVYN8eHu6xqkyxVV0zNeRbNFan37BStJLAYQ',)
+[03/04/2022 20:21:02.476]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.public_id = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:21:02.477]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 45.35s ago] ('f769cb76-753e-4d81-b6e3-4d565b5b0466', 1, 0)
+[03/04/2022 20:21:02.479]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO cadenas (text, public_id_fk) VALUES (?, ?)
+[03/04/2022 20:21:02.480]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00030s] ('Culo de Mono 6', 'f769cb76-753e-4d81-b6e3-4d565b5b0466')
+[03/04/2022 20:21:02.481]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:21:02.632]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:21:02.633]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.id = ?
+[03/04/2022 20:21:02.634]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00032s] (1,)
+[03/04/2022 20:21:02.637]	 INFO 	[server.almacenar:80]	 ALMACENA|Culo de Mono 6 ADDED|f769cb76-753e-4d81-b6e3-4d565b5b0466
+[03/04/2022 20:21:02.638]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
+[03/04/2022 20:21:02.638]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 45.5s ago] ('ALMACENA', 'SUCCESS', 159.0, '2022-04-03 20:21:02.478264')
+[03/04/2022 20:21:02.640]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:21:16.283]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:21:18.303]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:21:18.305]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:21:18.305]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 61.18s ago] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMjA3OTh9.FLXOXBWc8jiB6zDfCCwJQjBU7yqJdQQDAyVTKW33Y4o',)
+[03/04/2022 20:21:18.307]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.public_id = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:21:18.307]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 61.18s ago] ('f769cb76-753e-4d81-b6e3-4d565b5b0466', 1, 0)
+[03/04/2022 20:21:18.309]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT cadenas.id AS cadenas_id, cadenas.text AS cadenas_text, cadenas.public_id_fk AS cadenas_public_id_fk 
+FROM cadenas
+[03/04/2022 20:21:18.309]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 61.18s ago] ()
+[03/04/2022 20:21:18.310]	 INFO 	[server.consultar:144]	 CONSULTA|Líneas en las que aparece:3|f769cb76-753e-4d81-b6e3-4d565b5b0466
+[03/04/2022 20:21:18.311]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
+[03/04/2022 20:21:18.311]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 61.17s ago] ('CONSULTA', 'SUCCESS', 2.0, '2022-04-03 20:21:18.308827')
+[03/04/2022 20:21:18.313]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:21:39.380]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:21:41.791]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:21:41.792]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:21:41.792]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 84.67s ago] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMTI2MTZ9.iYTyQ3SAVYN8eHu6xqkyxVV0zNeRbNFan37BStJLAYQ',)
+[03/04/2022 20:21:41.794]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.public_id = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:21:41.794]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 84.67s ago] ('f769cb76-753e-4d81-b6e3-4d565b5b0466', 1, 0)
+[03/04/2022 20:21:41.796]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO cadenas (text, public_id_fk) VALUES (?, ?)
+[03/04/2022 20:21:41.796]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 39.32s ago] ('Culo de morsa', 'f769cb76-753e-4d81-b6e3-4d565b5b0466')
+[03/04/2022 20:21:41.798]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:21:41.957]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:21:41.958]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.id = ?
+[03/04/2022 20:21:41.958]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 39.32s ago] (1,)
+[03/04/2022 20:21:41.960]	 INFO 	[server.almacenar:80]	 ALMACENA|Culo de morsa ADDED|f769cb76-753e-4d81-b6e3-4d565b5b0466
+[03/04/2022 20:21:41.961]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
+[03/04/2022 20:21:41.961]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 84.82s ago] ('ALMACENA', 'SUCCESS', 165.0, '2022-04-03 20:21:41.795828')
+[03/04/2022 20:21:41.963]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:21:54.250]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:21:55.899]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:21:55.899]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:21:55.899]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 98.78s ago] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMjA3OTh9.FLXOXBWc8jiB6zDfCCwJQjBU7yqJdQQDAyVTKW33Y4o',)
+[03/04/2022 20:21:55.902]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.public_id = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:21:55.903]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 98.77s ago] ('f769cb76-753e-4d81-b6e3-4d565b5b0466', 1, 0)
+[03/04/2022 20:21:55.906]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT cadenas.id AS cadenas_id, cadenas.text AS cadenas_text, cadenas.public_id_fk AS cadenas_public_id_fk 
+FROM cadenas
+[03/04/2022 20:21:55.906]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 98.77s ago] ()
+[03/04/2022 20:21:55.907]	 INFO 	[server.consultar:144]	 CONSULTA|Líneas en las que aparece:4|f769cb76-753e-4d81-b6e3-4d565b5b0466
+[03/04/2022 20:21:55.908]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
+[03/04/2022 20:21:55.909]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 98.77s ago] ('CONSULTA', 'SUCCESS', 3.0, '2022-04-03 20:21:55.905926')
+[03/04/2022 20:21:55.910]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:22:16.199]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:22:18.221]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:22:18.222]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:22:18.222]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 121.1s ago] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMjA3OTh9.FLXOXBWc8jiB6zDfCCwJQjBU7yqJdQQDAyVTKW33Y4o',)
+[03/04/2022 20:22:18.224]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.public_id = ?
+ LIMIT ? OFFSET ?
+[03/04/2022 20:22:18.224]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 121.1s ago] ('f769cb76-753e-4d81-b6e3-4d565b5b0466', 1, 0)
+[03/04/2022 20:22:18.227]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO invalidtokens (token_body, public_id_fk) VALUES (?, ?)
+[03/04/2022 20:22:18.227]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [generated in 0.00027s] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMjA3OTh9.FLXOXBWc8jiB6zDfCCwJQjBU7yqJdQQDAyVTKW33Y4o', 'f769cb76-753e-4d81-b6e3-4d565b5b0466')
+[03/04/2022 20:22:18.229]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:22:18.365]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:22:18.365]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT users.id AS users_id, users.public_id AS users_public_id, users.name AS users_name, users.password AS users_password 
+FROM users 
+WHERE users.id = ?
+[03/04/2022 20:22:18.366]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 75.73s ago] (1,)
+[03/04/2022 20:22:18.367]	 INFO 	[server.logout:184]	 LOGOUT|Logout realizado con éxito|f769cb76-753e-4d81-b6e3-4d565b5b0466
+[03/04/2022 20:22:18.368]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)
+[03/04/2022 20:22:18.368]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 121.2s ago] ('LOGOUT', 'SUCCESS', 142.0, '2022-04-03 20:22:18.225674')
+[03/04/2022 20:22:18.371]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 20:22:29.550]	 INFO 	[server.decorator:29]	 Comprobando Token
+[03/04/2022 20:22:31.333]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 20:22:31.333]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 SELECT invalidtokens.id AS invalidtokens_id, invalidtokens.token_body AS invalidtokens_token_body, invalidtokens.public_id_fk AS invalidtokens_public_id_fk 
+FROM invalidtokens 
+WHERE invalidtokens.token_body = ?
+[03/04/2022 20:22:31.334]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 134.2s ago] ('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJmNzY5Y2I3Ni03NTNlLTRkODEtYjZlMy00ZDU2NWI1YjA0NjYiLCJleHAiOjE2NDkwMjA3OTh9.FLXOXBWc8jiB6zDfCCwJQjBU7yqJdQQDAyVTKW33Y4o',)

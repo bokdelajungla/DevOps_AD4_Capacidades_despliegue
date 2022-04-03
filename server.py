@@ -14,11 +14,20 @@ from flask_sqlalchemy import SQLAlchemy
 # Para hacer uso de argumentos
 import argparse
 
-# Para hacer uso de losl logs
+# Para hacer uso de los logs
 import logging
+from logging.handlers import TimedRotatingFileHandler
+from logging.config import dictConfig
+
+# Imports de sistema y fecha
+import os
+import datetime
 
 # Parámetros por defecto y configuración
 import config.default
+
+# Current working dir
+cwd = os.getcwd()
 
 # Manejador de la Base de Datos
 db = SQLAlchemy()
@@ -71,12 +80,20 @@ def check_file(fichero):
         print("Cargando datos de " + fichero)
         return 1
 
+def app_log_filename(self):
+    now = datetime.date.today()
+    return '/logs/server-'+now.strftime("%Y-%m-%d")
+
+def app_err_log_filename(self):
+    now = datetime.date.today()
+    return '/logs/error-'+now.strftime("%Y-%m-%d")
+
 
 # Funciones para el logging
 def configure_logging(app):
     # Eliminamos los posibles manejadores, si existen, del logger por defecto
     del app.logger.handlers[:]
-    # Añadimos el logger por defecto a la lista de loggers
+    # Añadimos el logger por defecto a la lista de loggers y el de sqlalchemy
     loggers = [app.logger, logging.getLogger('sqlalchemy'), ]
     handlers = []
     # Creamos un manejador para escribir los mensajes por consola
@@ -84,12 +101,33 @@ def configure_logging(app):
     console_handler.setLevel(logging.DEBUG)
     console_handler.setFormatter(verbose_formatter())
     handlers.append(console_handler)
+
+    '''
+    # Creamos un manejador para el fichero de trazas de la app
+    app_log_handler = logging.handlers.TimedRotatingFileHandler(filename=cwd + "/logs/filename",
+                                                                when='S',
+                                                                interval=5,
+                                                                backupCount=5)
+    app_log_handler.rotation_filename = app_log_filename
+    app_log_handler.setLevel(logging.INFO)
+    app_log_handler.setFormatter(verbose_formatter())
+    handlers.append(app_log_handler)
+    #Creamos el manejador para el fichero de errores
+    app_err_log_handler = logging.handlers.TimedRotatingFileHandler(filename=cwd + "/logs/filename",
+                                                                    when='S',
+                                                                    interval=5,
+                                                                    backupCount=5)
+    app_err_log_handler.rotation_filename = app_err_log_filename
+    app_err_log_handler.setLevel(logging.ERROR)
+    app_err_log_handler.setFormatter(verbose_formatter())
+    handlers.append(app_err_log_handler)
+    
+    '''
     # Asociamos cada uno de los handlers a cada uno de los loggers
     for l in loggers:
         for handler in handlers:
             l.addHandler(handler)
         l.propagate = False
-        l.setLevel(logging.DEBUG)
 
 
 def verbose_formatter():

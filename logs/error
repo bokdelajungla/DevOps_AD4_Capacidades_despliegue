@@ -114,3 +114,14 @@ sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled 
 [SQL: INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)]
 [parameters: ('ALMACENA', <Status.SUCCES: 'SUCCESS'>, 8140.0, '2022-04-03 18:04:02.262591')]
 (Background on this error at: https://sqlalche.me/e/14/rvf5) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[03/04/2022 20:55:24.437]	 ERROR 	[server.log_exception:1457]	 Exception on /metrics [GET]
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1538, in finalize_request
+    response = self.make_response(rv)
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1701, in make_response
+    raise TypeError(
+TypeError: The view function for 'public.metrics_show' did not return a valid response. The function either returned None or ended without a return statement.

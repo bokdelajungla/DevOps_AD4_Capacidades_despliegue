@@ -5,6 +5,7 @@
 from flask import request, jsonify, make_response, current_app
 from flask import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.exceptions import HTTPException
 import jwt
 import uuid
 import datetime
@@ -86,7 +87,21 @@ def health_check():
     data = {'code': 'SUCCESS', 'message': 'ALL OK'}
     return make_response(jsonify(data), 200)
 
+
 @public_bp.route('/metrics')
 def metrics_show():
     current_app.logger.info('Acceso a Metrics')
     return None
+
+
+@public_bp.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors
+    if isinstance(e, HTTPException):
+        data = {'code': 'ERROR', 'message': 'Servicio no Disponible'}
+        return make_response(jsonify(data), 503)
+
+    # now you're handling non-HTTP exceptions only
+    data = {'code': 'ERROR', 'message': 'Generic Error'}
+    return make_response(jsonify(data), 500)
+

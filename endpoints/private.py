@@ -4,10 +4,10 @@
 
 from flask import request, jsonify, make_response, current_app
 from flask import Blueprint
+from werkzeug.exceptions import HTTPException
 from functools import wraps
 import jwt
-import uuid
-import datetime
+
 
 # Hacemos uso de la biblioteca unicodedata para tratar las tildes y caracteres epeciales
 import unicodedata
@@ -15,7 +15,7 @@ import unicodedata
 # Librerias propias
 import config.default
 from server import db
-from models.entitys import User, Cadena, InvalidToken, EndpointUsage
+from models.entitys import User, Cadena, InvalidToken
 from utils.stopwatch import Stopwatch
 from utils.status import Status, registrar_usage
 
@@ -168,6 +168,7 @@ def consultar(current_user):
         current_app.logger.warn(endpoint_name + "|" + data['message'])
         return make_response(jsonify(data), 400)
 
+
 @private_bp.route("/logout", methods=['GET'])
 @token_required
 def logout(current_user):
@@ -192,3 +193,15 @@ def logout(current_user):
         # Para el registro de uso
         registrar_usage(endpoint_name, Status.FAIL.value, stopwatch)
         return make_response(jsonify(data), 500)
+
+
+@private_bp.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors
+    if isinstance(e, HTTPException):
+        data = {'code': 'ERROR', 'message': 'Servicio no Disponible'}
+        return make_response(jsonify(data), 503)
+
+    # now you're handling non-HTTP exceptions only
+    data = {'code': 'ERROR', 'message': 'Generic Error'}
+    return make_response(jsonify(data), 500)

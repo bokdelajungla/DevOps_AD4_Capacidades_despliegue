@@ -118,7 +118,7 @@ def verbose_formatter():
 # main() tiene también su propio test
 # y app.run() depende de Flask)
 if __name__ == "__main__": #pragma: no cover
-    file, port = main()
+    port = main()
     app = create_app()
     app.run(host=config.default.HOST, port=port, ssl_context='adhoc')
 

@@ -109,30 +109,51 @@ def health_check():
 @public_bp.route('/metrics')
 def metrics_show():
     current_app.logger.info('Acceso a Metrics')
-    print("--------------------------")
+
+    # Endpoint CONSULTA
+    consultaHits = EndpointUsage.query.filter(EndpointUsage.endpoint_name == 'CONSULTA').count()
+    resultsAvgResConsulta = EndpointUsage.query.with_entities(func.avg(EndpointUsage.response_time).filter(EndpointUsage.endpoint_name=='CONSULTA')).first()
+    for row in resultsAvgResConsulta:
+        averageConsulta = row
+
+    # Endpoint ALMACENA
+    almacenaHits = EndpointUsage.query.filter(EndpointUsage.endpoint_name == 'ALMACENA').count()
+    resultsAvgResAlmacena = EndpointUsage.query.with_entities(func.avg(EndpointUsage.response_time).filter(EndpointUsage.endpoint_name=='ALMACENA')).first()
+    for row in resultsAvgResAlmacena:
+        averageAlmacena = row
+
+    # DB entries
     resultsEntries = Cadena.query.count()
-    print(resultsEntries)
-    print("--------------------------")
-    resultsHits = EndpointUsage.query.count()
-    print(resultsHits)
-    print("--------------------------")
-    resultsAverageResponse = session.query(func.avg(EndpointUsage.response_time).label('average')).filter(EndpointUsage.response_time == EndpointUsage.response_time)
-    print(resultsAverageResponse)
 
     data = {
-    'metrics': [
-    {
-      'name': 'consulta_avg_response_time',
-      "value": resultsAverageResponse
-    },
-    {
-      'name': 'consulta_hits',
-      'value': resultsHits
-    },
-    {
-      'name': 'db_entries',
-      'value': resultsEntries
-    }
-    ]
+        "metrics": [{
+            "Endpoint_CONSULTA": [{
+                "name": "consulta_avg_response_time",
+                "value": averageConsulta
+            },
+                {
+                    "name": "consulta_hits",
+                    "value": consultaHits
+                }
+            ]
+        },
+            {
+                "Endpoint_ALMACENA": [{
+                    "name": "almacena_avg_response_time",
+                    "value": averageAlmacena
+                },
+                    {
+                        "name": "almacena_hits",
+                        "value": almacenaHits
+                    }
+                ]
+            },
+            {
+                "Resource_DB": [{
+                    "name": "db_entries",
+                    "value": resultsEntries
+                }]
+            }
+        ]
     }
     return make_response(jsonify(data), 200)

@@ -139,3 +139,4 @@ if __name__ == "__main__": #pragma: no cover
     check_file(file)
     app = create_app()
     app.run(host=config.default.HOST, port=port, ssl_context='adhoc')
+

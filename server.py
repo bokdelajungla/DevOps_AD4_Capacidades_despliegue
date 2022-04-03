@@ -99,7 +99,7 @@ def configure_logging(app):
                                                                 when='midnight',
                                                                 interval=1,
                                                                 backupCount=14)
-    app_log_handler.suffix = "%Y%m%d"
+    app_log_handler.suffix = "%Y%m%d.log"
     app_log_handler.setLevel(logging.INFO)
     app_log_handler.setFormatter(verbose_formatter())
     handlers.append(app_log_handler)
@@ -109,7 +109,7 @@ def configure_logging(app):
                                                                     when='midnight',
                                                                     interval=1,
                                                                     backupCount=14)
-    app_err_log_handler.suffix = "%Y%m%d"
+    app_err_log_handler.suffix = "%Y%m%d.log"
     app_err_log_handler.setLevel(logging.ERROR)
     app_err_log_handler.setFormatter(verbose_formatter())
     handlers.append(app_err_log_handler)

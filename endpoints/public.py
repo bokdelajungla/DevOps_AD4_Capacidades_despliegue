@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import uuid
 import datetime
+import subprocess
 
 import config.default
 from server import db
@@ -77,16 +78,31 @@ def get_all_users():
 @public_bp.route('/ready')
 def ready_check():
     current_app.logger.info('Acceso a ReadyCheck')
-    data = {'code': 'SUCCESS', 'message': 'ALL OK'}
-    return make_response(jsonify(data), 200)
+    if db.connect():
+        db.close()
+        data = {'code': 'SUCCESS', 'message': 'ALL OK'}
+        return make_response(jsonify(data), 200)
+    else:
+        data = {'code': 'ERROR', 'message': 'DATABASE IS NOT CONNECTED'}
+        return make_response(jsonify(data), 503)
+
 
 @public_bp.route('/health')
 def health_check():
     current_app.logger.info('Acceso a HealthCheck')
-    data = {'code': 'SUCCESS', 'message': 'ALL OK'}
-    return make_response(jsonify(data), 200)
+    stat = subprocess.call(["systemctl", "is-active", "--quiet", "ssh"])
+    if (stat == 0):  # if 0 (active), print "Active"
+        data = {'code': 'SUCCESS', 'message': 'ALL OK'}
+        return make_response(jsonify(data), 200)
+    else:
+        data = {'code': 'ERROR', 'message': 'SERVICE IS NOT RUNNING CORRECTLY'}
+        return make_response(jsonify(data), 503)
 
 @public_bp.route('/metrics')
 def metrics_show():
     current_app.logger.info('Acceso a Metrics')
     return None
+
+
+
+

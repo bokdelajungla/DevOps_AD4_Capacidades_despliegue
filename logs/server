@@ -1,3 +1,63 @@
 [03/04/2022 13:23:55.104]	 INFO 	[server.home:23]	 Acceso a Home
 [03/04/2022 13:23:55.706]	 INFO 	[server.home:23]	 Acceso a Home
 [03/04/2022 13:23:56.269]	 INFO 	[server.home:23]	 Acceso a Home
+[03/04/2022 14:31:28.213]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 14:31:28.213]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 14:31:28.213]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 14:31:28.213]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 14:31:28.214]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 14:31:28.214]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 14:31:28.214]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 14:31:28.214]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 14:31:28.215]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 14:31:28.215]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 14:31:28.215]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 14:31:28.215]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 14:31:28.215]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 14:31:28.215]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 14:31:28.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 14:31:28.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 14:31:28.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 14:31:28.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 14:31:28.216]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 14:31:28.217]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 14:41:46.270]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 14:41:46.270]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 14:41:46.270]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 14:41:46.270]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 14:41:46.271]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 14:41:46.271]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 14:41:46.271]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 14:41:46.271]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 14:41:46.273]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 14:41:46.273]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 14:41:46.273]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 14:41:46.273]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 14:41:46.273]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 14:41:46.273]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 14:41:46.274]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 14:41:46.274]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 14:41:46.274]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 14:41:46.275]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 14:41:46.275]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 14:41:46.275]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 14:42:27.327]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 14:42:27.327]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 14:42:27.327]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(id, Column)
+[03/04/2022 14:42:27.328]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 14:42:27.328]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(name, Column)
+[03/04/2022 14:42:27.328]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) _configure_property(password, Column)
+[03/04/2022 14:42:27.329]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 14:42:27.329]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (User|users) constructed
+[03/04/2022 14:42:27.330]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 14:42:27.330]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 14:42:27.330]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 14:42:27.330]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 14:42:27.331]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 14:42:27.331]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (Cadena|cadenas) constructed
+[03/04/2022 14:42:27.331]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 14:42:27.332]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1938]	 (InvalidToken|invalidtokens) constructed

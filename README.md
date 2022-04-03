@@ -139,11 +139,60 @@ Se necesita un token válido para llevar a cabo la consulta.\
 Para llevar a cabo la consulta de una palabra en el fichero se debe realizar un GET e incluir el parámetro string con la palabra que queremos almacenar en el fichero:
 * ej: _POST 127.0.0.1/consulta?string=Cadena_
 
-
-
 Si se emplea un verbo distinto de GET devolverá un error 405 Method Not Allowed.\
 Si no se incluye el parámetro "string" devolverá una respuesta 400 BAD REQUEST con un json en el cuerpo con información sobre el error (debe incluir el parámetro string).\
 Si se envía más de una palabra devolvera una respuesta 400 BAD REQUEST con un json en el cuerpo con información sobre el error (debe enviar una única palabra).
+### Ready
+Endpoint que comprueba la conexión con la base de datos y el correcto funcionamiento de los logs
+Si todo funciona correctamente devuelve un 200 OK. Si alguno de los dos falla devuelve un 503 NO DISPONIBLE.
+
+### Health
+Endpoint que devuelve 200 OK si el funciona correctamente, 503 si no está disponible.
+
+### Metrics
+Este endpoint devuelve un JSON con las métricas de los endpoints CONSULTA y ALMACENA y del numero de cadenas almacenadas actualmente en la base de datos.\
+En concreto devuelve el número de peticiones en cada endpoint y el tiempo medio de respuesta de cada endpoint.\
+El formato de salida es el siguiente:
+
+```yalm
+{
+  "metrics": [
+    {
+      "Endpoint_CONSULTA": [
+        {
+          "name": "consulta_avg_response_time",
+          "value": averageConsulta
+        },
+        {
+          "name": "consulta_hits",
+          "value": consultaHits
+        }
+      ]
+    },
+    {
+      "Endpoint_ALMACENA": [
+        {
+          "name": "almacena_avg_response_time",
+          "value": averageAlmacena
+        },
+        {
+          "name": "almacena_hits",
+          "value": almacenaHits
+        }
+      ]
+    },
+    {
+      "Resource_DB": [
+        {
+          "name": "db_entries",
+          "value": resultsEntries
+        }
+      ]
+    }
+  ]
+}
+```
+Si no estuviera disponible enviará un mensaje 503.
 
 ## Tests
 NOTA: No se han implementado los test para verificar el funcionamiento correcto de los tokens.\

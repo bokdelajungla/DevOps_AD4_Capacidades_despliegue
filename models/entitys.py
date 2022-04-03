@@ -30,3 +30,11 @@ class InvalidToken(db.Model):
     public_id_fk = db.Column(db.ForeignKey('users.public_id'))
     pertenece_a = db.relationship('User', back_populates='tokens_expirados')
 
+class EndpointUsage(db.Model):
+    __tablename__='endpointusage'
+    id = db.Column(db.Integer, primary_key=True)
+    endpoint_name = db.Column(db.String(25))
+    status = db.Column(db.String(10))
+    response_time = db.Column(db.Float)
+    fecha_acc = db.Column(db.DateTime())
+

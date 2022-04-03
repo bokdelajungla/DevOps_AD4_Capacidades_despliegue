@@ -133,10 +133,13 @@ Para llevar a cabo el almacenamiento de una cadena en el fichero se debe realiza
 
 Si se emplea un verbo distinto de POST devolverá un error 405 Method Not Allowed.\
 Si no se incluye el parámetro "string" devolverá una respuesta 400 BAD REQUEST con un json en el cuerpo con información sobre el error (debe incluir el parámetro string).
+
 ### Consulta
 Se necesita un token válido para llevar a cabo la consulta.\
 Para llevar a cabo la consulta de una palabra en el fichero se debe realizar un GET e incluir el parámetro string con la palabra que queremos almacenar en el fichero:
 * ej: _POST 127.0.0.1/consulta?string=Cadena_
+
+
 
 Si se emplea un verbo distinto de GET devolverá un error 405 Method Not Allowed.\
 Si no se incluye el parámetro "string" devolverá una respuesta 400 BAD REQUEST con un json en el cuerpo con información sobre el error (debe incluir el parámetro string).\

@@ -17,11 +17,9 @@ import argparse
 # Para hacer uso de los logs
 import logging
 from logging.handlers import TimedRotatingFileHandler
-from logging.config import dictConfig
 
 # Imports de sistema y fecha
 import os
-import datetime
 
 # Parámetros por defecto y configuración
 import config.default
@@ -59,26 +57,11 @@ def create_app():
 # Comprobación de argumentos
 def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("-f", '--file', type=str, help="nombre del fichero de persistencia", required=False, default=config.default.FILENAME)
     parser.add_argument("-p", '--port', type=int, help="numero de puerto de escucha", required=False, default=config.default.PORT)
     args = parser.parse_args()
 
     print("Escuchando en puerto: ", args.port)
-    return args.file, args.port
-
-
-# DEPRECATED
-# Comprobación existencia del fichero de persistencia
-def check_file(fichero):
-    try:
-        with open(fichero, "x") as f: #Si el fichero existe lanza una excepcion
-            print("Creando fichero de persistencia: " + fichero)
-            return 0
-
-    except FileExistsError:
-        print("Encontrado fichero de persistencia...")
-        print("Cargando datos de " + fichero)
-        return 1
+    return args.port
 
 
 # Funciones para el logging
@@ -136,7 +119,6 @@ def verbose_formatter():
 # y app.run() depende de Flask)
 if __name__ == "__main__": #pragma: no cover
     file, port = main()
-    check_file(file)
     app = create_app()
     app.run(host=config.default.HOST, port=port, ssl_context='adhoc')
 

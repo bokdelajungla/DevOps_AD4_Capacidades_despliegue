@@ -7,7 +7,6 @@ import argparse
 from server import create_app
 from server import check_file
 from server import main
-from config.default import FILENAME
 from config.default import PORT
 
 

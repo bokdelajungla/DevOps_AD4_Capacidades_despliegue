@@ -2038,3 +2038,143 @@ FROM endpointusage
 FROM (SELECT cadenas.id AS cadenas_id, cadenas.text AS cadenas_text, cadenas.public_id_fk AS cadenas_public_id_fk 
 FROM cadenas) AS anon_1
 [03/04/2022 22:29:58.672]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [cached since 415.1s ago] ()
+[03/04/2022 22:31:41.67]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 22:31:41.67]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 22:31:41.68]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(id, Column)
+[03/04/2022 22:31:41.68]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 22:31:41.68]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(name, Column)
+[03/04/2022 22:31:41.68]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(password, Column)
+[03/04/2022 22:31:41.69]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 22:31:41.69]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) constructed
+[03/04/2022 22:31:41.70]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 22:31:41.70]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 22:31:41.70]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 22:31:41.70]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 22:31:41.71]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 22:31:41.71]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) constructed
+[03/04/2022 22:31:41.72]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 22:31:41.72]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 22:31:41.72]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 22:31:41.73]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 22:31:41.73]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 22:31:41.73]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 22:31:41.74]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(id, Column)
+[03/04/2022 22:31:41.74]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(endpoint_name, Column)
+[03/04/2022 22:31:41.74]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(status, Column)
+[03/04/2022 22:31:41.74]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(response_time, Column)
+[03/04/2022 22:31:41.75]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(fecha_acc, Column)
+[03/04/2022 22:31:41.75]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<endpointusage>, primary_key=True, nullable=False)])
+[03/04/2022 22:31:41.76]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) constructed
+[03/04/2022 22:31:47.605]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 22:31:47.606]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("users")
+[03/04/2022 22:31:47.606]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:47.607]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("cadenas")
+[03/04/2022 22:31:47.607]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:47.608]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("invalidtokens")
+[03/04/2022 22:31:47.608]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:47.609]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("endpointusage")
+[03/04/2022 22:31:47.609]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:47.610]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+DROP TABLE invalidtokens
+[03/04/2022 22:31:47.610]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00013s] ()
+[03/04/2022 22:31:47.782]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+DROP TABLE cadenas
+[03/04/2022 22:31:47.783]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00022s] ()
+[03/04/2022 22:31:47.921]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+DROP TABLE endpointusage
+[03/04/2022 22:31:47.921]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00020s] ()
+[03/04/2022 22:31:48.47]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+DROP TABLE users
+[03/04/2022 22:31:48.47]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00023s] ()
+[03/04/2022 22:31:48.171]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 22:31:50.816]	 INFO 	[sqlalchemy.engine.Engine._begin_impl:942]	 BEGIN (implicit)
+[03/04/2022 22:31:50.816]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("users")
+[03/04/2022 22:31:50.816]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.817]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA temp.table_info("users")
+[03/04/2022 22:31:50.817]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.818]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("cadenas")
+[03/04/2022 22:31:50.818]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.818]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA temp.table_info("cadenas")
+[03/04/2022 22:31:50.818]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.819]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("invalidtokens")
+[03/04/2022 22:31:50.819]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.819]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA temp.table_info("invalidtokens")
+[03/04/2022 22:31:50.820]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.820]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA main.table_info("endpointusage")
+[03/04/2022 22:31:50.820]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.820]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 PRAGMA temp.table_info("endpointusage")
+[03/04/2022 22:31:50.820]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [raw sql] ()
+[03/04/2022 22:31:50.821]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	public_id INTEGER, 
+	name VARCHAR(50), 
+	password VARCHAR(64), 
+	PRIMARY KEY (id), 
+	UNIQUE (public_id)
+)
+
+
+[03/04/2022 22:31:50.821]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00015s] ()
+[03/04/2022 22:31:51.8]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+CREATE TABLE endpointusage (
+	id INTEGER NOT NULL, 
+	endpoint_name VARCHAR(25), 
+	status VARCHAR(10), 
+	response_time FLOAT, 
+	fecha_acc DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+[03/04/2022 22:31:51.8]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00019s] ()
+[03/04/2022 22:31:51.131]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+CREATE TABLE cadenas (
+	id INTEGER NOT NULL, 
+	text VARCHAR(100), 
+	public_id_fk INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(public_id_fk) REFERENCES users (public_id)
+)
+
+
+[03/04/2022 22:31:51.131]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00020s] ()
+[03/04/2022 22:31:51.271]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1761]	 
+CREATE TABLE invalidtokens (
+	id INTEGER NOT NULL, 
+	token_body VARCHAR(100), 
+	public_id_fk INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(public_id_fk) REFERENCES users (public_id)
+)
+
+
+[03/04/2022 22:31:51.271]	 INFO 	[sqlalchemy.engine.Engine._execute_context:1766]	 [no key 0.00020s] ()
+[03/04/2022 22:31:51.396]	 INFO 	[sqlalchemy.engine.Engine._commit_impl:1002]	 COMMIT
+[03/04/2022 22:32:10.701]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(cadenas_ingresadas, RelationshipProperty)
+[03/04/2022 22:32:10.701]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(tokens_expirados, RelationshipProperty)
+[03/04/2022 22:32:10.701]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(id, Column)
+[03/04/2022 22:32:10.701]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(public_id, Column)
+[03/04/2022 22:32:10.702]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(name, Column)
+[03/04/2022 22:32:10.702]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) _configure_property(password, Column)
+[03/04/2022 22:32:10.702]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<users>, primary_key=True, nullable=False)])
+[03/04/2022 22:32:10.703]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (User|users) constructed
+[03/04/2022 22:32:10.704]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(ingresada_por, RelationshipProperty)
+[03/04/2022 22:32:10.704]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(id, Column)
+[03/04/2022 22:32:10.704]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(text, Column)
+[03/04/2022 22:32:10.704]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) _configure_property(public_id_fk, Column)
+[03/04/2022 22:32:10.705]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<cadenas>, primary_key=True, nullable=False)])
+[03/04/2022 22:32:10.705]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (Cadena|cadenas) constructed
+[03/04/2022 22:32:10.706]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(pertenece_a, RelationshipProperty)
+[03/04/2022 22:32:10.706]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(id, Column)
+[03/04/2022 22:32:10.706]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(token_body, Column)
+[03/04/2022 22:32:10.706]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) _configure_property(public_id_fk, Column)
+[03/04/2022 22:32:10.707]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<invalidtokens>, primary_key=True, nullable=False)])
+[03/04/2022 22:32:10.707]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (InvalidToken|invalidtokens) constructed
+[03/04/2022 22:32:10.708]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(id, Column)
+[03/04/2022 22:32:10.708]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(endpoint_name, Column)
+[03/04/2022 22:32:10.708]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(status, Column)
+[03/04/2022 22:32:10.708]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(response_time, Column)
+[03/04/2022 22:32:10.708]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) _configure_property(fecha_acc, Column)
+[03/04/2022 22:32:10.709]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) Identified primary key columns: ColumnSet([Column('id', Integer(), table=<endpointusage>, primary_key=True, nullable=False)])
+[03/04/2022 22:32:10.709]	 INFO 	[sqlalchemy.orm.mapper.Mapper._log:1965]	 (EndpointUsage|endpointusage) constructed

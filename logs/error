@@ -1,1 +1,116 @@
 [03/04/2022 14:33:00.644]	 ERROR 	[server.consultar:137]	 CONSULTA|can only concatenate str (not "int") to str
+[03/04/2022 18:02:55.555]	 ERROR 	[server.log_exception:1457]	 Exception on /login [GET]
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\Documentos\DAM\Segundo\DevOps\DevOps_AD4_Capacidades_despliegue\endpoints\public.py", line 37, in login_user
+    if check_password_hash(user.password, auth.password):
+AttributeError: 'NoneType' object has no attribute 'password'
+[03/04/2022 18:04:50.489]	 ERROR 	[server.log_exception:1457]	 Exception on /almacena [POST]
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    self.dialect.do_execute(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.InterfaceError: Error binding parameter 1 - probably unsupported type.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Documentos\DAM\Segundo\DevOps\DevOps_AD4_Capacidades_despliegue\endpoints\private.py", line 92, in almacenar
+    registrar_usage(endpoint_name, stopwatch)
+  File "D:\Documentos\DAM\Segundo\DevOps\DevOps_AD4_Capacidades_despliegue\endpoints\private.py", line 32, in registrar_usage
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 1431, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 3363, in flush
+    self._flush(objects)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 3503, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 3463, in _flush
+    flush_context.execute()
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\persistence.py", line 1237, in _emit_insert_statements
+    result = connection._execute_20(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\base.py", line 1620, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\sql\elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\base.py", line 1487, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\base.py", line 1851, in _execute_context
+    self._handle_dbapi_exception(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\base.py", line 2032, in _handle_dbapi_exception
+    util.raise_(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\base.py", line 1808, in _execute_context
+    self.dialect.do_execute(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\engine\default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 1 - probably unsupported type.
+[SQL: INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)]
+[parameters: ('ALMACENA', <Status.SUCCES: 'SUCCESS'>, 8140.0, '2022-04-03 18:04:02.262591')]
+(Background on this error at: https://sqlalche.me/e/14/rvf5)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Anaconda\envs\application\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\Documentos\DAM\Segundo\DevOps\DevOps_AD4_Capacidades_despliegue\endpoints\private.py", line 58, in decorator
+    return f(current_user, *args, **kwargs)
+  File "D:\Documentos\DAM\Segundo\DevOps\DevOps_AD4_Capacidades_despliegue\endpoints\private.py", line 97, in almacenar
+    'userid': current_user.public_id, 'cadena': cadena}
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\attributes.py", line 481, in __get__
+    return self.impl.get(state, dict_)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\attributes.py", line 941, in get
+    value = self._fire_loader_callables(state, key, passive)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\attributes.py", line 972, in _fire_loader_callables
+    return state._load_expired(state, passive)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\state.py", line 710, in _load_expired
+    self.manager.expired_attribute_loader(self, toload, passive)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\loading.py", line 1451, in load_scalar_attributes
+    result = load_on_ident(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\loading.py", line 407, in load_on_ident
+    return load_on_pk_identity(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\loading.py", line 530, in load_on_pk_identity
+    session.execute(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 1691, in execute
+    conn = self._connection_for_bind(bind)
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 1532, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 721, in _connection_for_bind
+    self._assert_active()
+  File "D:\Anaconda\envs\application\lib\site-packages\sqlalchemy\orm\session.py", line 601, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.InterfaceError) Error binding parameter 1 - probably unsupported type.
+[SQL: INSERT INTO endpointusage (endpoint_name, status, response_time, fecha_acc) VALUES (?, ?, ?, ?)]
+[parameters: ('ALMACENA', <Status.SUCCES: 'SUCCESS'>, 8140.0, '2022-04-03 18:04:02.262591')]
+(Background on this error at: https://sqlalche.me/e/14/rvf5) (Background on this error at: https://sqlalche.me/e/14/7s2a)

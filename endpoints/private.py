@@ -9,16 +9,27 @@ import jwt
 import uuid
 import datetime
 
-import config.default
-from server import db
-from models.entitys import User, Cadena, InvalidToken
-
 # Hacemos uso de la biblioteca unicodedata para tratar las tildes y caracteres epeciales
 import unicodedata
 
+# Librerias propias
+import config.default
+from server import db
+from models.entitys import User, Cadena, InvalidToken, EndpointUsage
+from utils.stopwatch import Stopwatch
+from utils.status import Status
 
 
 private_bp = Blueprint('private', __name__, template_folder='templates')
+
+def registrar_usage(endpoint_name, stopwatch):
+    stopwatch.stop_stopwatch()
+    new_usage = EndpointUsage(endpoint_name=endpoint_name,
+                          status=Status.SUCCES.value,
+                          response_time=stopwatch.elapsed_time,
+                          fecha_acc=stopwatch.creation_time)
+    db.session.add(new_usage)
+    db.session.commit()
 
 
 def token_required(f):
@@ -61,6 +72,7 @@ Devuelve:
 @private_bp.route("/almacena", methods=['POST'])
 @token_required
 def almacenar(current_user):
+    stopwatch = Stopwatch()
     endpoint_name = "ALMACENA"
     current_app.logger.debug('Acceso a Almacena')
     if request.method == 'POST':
@@ -68,11 +80,16 @@ def almacenar(current_user):
             cadena = request.args.get('string')
 
             try:
-                new_cadena = Cadena(text=cadena, public_id_fk=current_user.public_id)
+                # Para el caso de uso
+                new_cadena = Cadena(text=cadena,
+                                    public_id_fk=current_user.public_id)
                 db.session.add(new_cadena)
                 db.session.commit()
                 data = {'code': 'SUCCESS', 'message': cadena + ' ADDED', 'userid': current_user.public_id}
                 current_app.logger.info(endpoint_name + "|" + data['message'] + "|" + data['userid'])
+
+                # Para el registro de uso
+                registrar_usage(endpoint_name, stopwatch)
                 return make_response(jsonify(data), 201)
 
             except BaseException as err:

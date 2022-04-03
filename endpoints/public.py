@@ -77,12 +77,14 @@ def get_all_users():
 @public_bp.route('/ready')
 def ready_check():
     current_app.logger.info('Acceso a ReadyCheck')
-    return None
+    data = {'code': 'SUCCESS', 'message': 'ALL OK'}
+    return make_response(jsonify(data), 200)
 
 @public_bp.route('/health')
 def health_check():
     current_app.logger.info('Acceso a HealthCheck')
-    return None
+    data = {'code': 'SUCCESS', 'message': 'ALL OK'}
+    return make_response(jsonify(data), 200)
 
 @public_bp.route('/metrics')
 def metrics_show():
